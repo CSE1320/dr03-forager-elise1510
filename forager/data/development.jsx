@@ -38,8 +38,39 @@ export const mushroomslist = [
       },
   ];
 
+  export const mushroomslistpercent = [
+    {
+      title: 'Death Cap',
+      imageId: 'dc',
+      imageUrl: '/images/dc.png',
+      toxic: true,
+      percent: '97'
+    },
+    {
+      title: 'Paddy Straw',
+      imageId: 'ps',
+      imageUrl: '/images/ps.png',
+      toxic: false,
+      percent: '60'
+    },
+    {
+        title: 'Destroying Angel',
+        imageId: 'da',
+        imageUrl: '/images/da.png',
+        toxic: true,
+        percent: '80'
+      },
+      {
+        title: 'False Death Cap',
+        imageId: 'fdc',
+        imageUrl: '/images/fdc.png',
+        toxic: true,
+        percent: '70'
+      },
+  ];
+
 // Two flavors of exporting:
 // export default dummyData; // Requires import dummyData from './data/development.js';
 
 // More than one export.
-export {warningMessage, dummyData,mushroomslist}; // Requires import {warningMessage, dummyData} from './data/development.js';
+export {warningMessage, dummyData,mushroomslist,mushroomslistpercent}; // Requires import {warningMessage, dummyData} from './data/development.js';

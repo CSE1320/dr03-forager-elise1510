@@ -37,7 +37,25 @@
   flex-wrap: wrap;
 }
 
+.square {
+  width: 31px;
+  height: 27px;
+  flex-shrink: 0;
+  border-radius: 7px;
+  display: flex; /* Add this */
+  align-items: center; /* Centers vertically */
+  justify-content: center; /* Centers horizontally */
+  text-align: center; /* Fallback for older browsers */
+}
 
-.cover{
+.value {
+  color: #FFF;
+  font-family: Nunito;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 800;
+  line-height: normal;
+}
+.cover {
   background: lightgray 50% / cover no-repeat;
 }

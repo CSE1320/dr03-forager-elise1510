@@ -1,6 +1,5 @@
-// components/mushroomList.jsx
 import React from 'react';
-import MushroomCard from './MushroomCard';
+import { MushroomCard, MushroomCardPercent } from './MushroomCard'; // Ensure correct import
 import styles from '../styles/mushroomList.module.css';
 
 const MushroomList = ({ mushrooms }) => {
@@ -21,7 +20,6 @@ const MushroomList = ({ mushrooms }) => {
 
 const DataMushroomList = ({ mushrooms }) => {
   return (
-    
     <div className="flex flex-wrap gap-4 px-6 justify-start items-start w-full self-start">
       {mushrooms.map((mushroom, index) => (
         <MushroomCard
@@ -36,6 +34,21 @@ const DataMushroomList = ({ mushrooms }) => {
   );
 };
 
+const DataMushroomListPercent = ({ mushrooms }) => {
+  return (
+    <div className="flex flex-wrap gap-4 px-6 justify-start items-start w-full self-start">
+      {mushrooms.map((mushroom, index) => (
+        <MushroomCardPercent
+          key={index}
+          title={mushroom.title}
+          imageId={mushroom.imageId}
+          imageUrl={mushroom.imageUrl}
+          toxic={mushroom.toxic}
+          percent={mushroom.percent}
+        />
+      ))}
+    </div>
+  );
+};
 
-
-export default DataMushroomList;
+export { DataMushroomList, DataMushroomListPercent };
