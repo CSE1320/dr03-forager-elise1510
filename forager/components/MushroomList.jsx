@@ -36,17 +36,20 @@ const DataMushroomList = ({ mushrooms }) => {
 
 const DataMushroomListPercent = ({ mushrooms }) => {
   return (
-    <div className="flex flex-wrap gap-4 px-6 justify-start items-start w-full self-start">
-      {mushrooms.map((mushroom, index) => (
-        <MushroomCardPercent
-          key={index}
-          title={mushroom.title}
-          imageId={mushroom.imageId}
-          imageUrl={mushroom.imageUrl}
-          toxic={mushroom.toxic}
-          percent={mushroom.percent}
-        />
-      ))}
+    <div className="justify-start w-full h-full"><h2 className= {styles.title}>Similar Matches</h2>
+      
+      <div className="flex flex-wrap gap-4 px-6 justify-start items-start w-full self-start">
+        {mushrooms.map((mushroom, index) => (
+          <MushroomCardPercent
+            key={index}
+            title={mushroom.title}
+            imageId={mushroom.imageId}
+            imageUrl={mushroom.imageUrl}
+            toxic={mushroom.toxic}
+            percent={mushroom.percent}
+          />
+        ))}
+      </div>
     </div>
   );
 };
