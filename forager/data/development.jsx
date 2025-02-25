@@ -130,6 +130,18 @@ export const pill = [{
   cat: 'Category'
 },
 ]
+export const shroom = {
+  
+    title: 'Death Cap',
+    imageId: 'dc',
+    imageUrl: '/images/dc.png',
+    toxic: true,
+    binom: 'Amanita phalloides',
+    info: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore.',
+    facts:["Cap Diameter: 5-15cm","Gill Color: White","Stem Color: White","Habitat: Temperate regions"]
+
+}
+
 
 // Two flavors of exporting:
 // export default dummyData; // Requires import dummyData from './data/development.js';
