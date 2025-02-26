@@ -1,7 +1,7 @@
 import React from 'react';
 import { nunitof } from '@/app/layout'; // Ensure this import is correct
 import styles from '../styles/comparisontable.module.css';
-
+//TODO: FIX BORDER
 const ComparisonTable = ({ yourshroom, shroom2 }) => {
     const attributes = [
         { key: "cshape", label: "Cap Shape" },
@@ -17,17 +17,16 @@ const ComparisonTable = ({ yourshroom, shroom2 }) => {
 
     return (
         <div className="flex flex-col items-center">
-            {/* Images Side by Side */}
-            <div className="flex justify-center gap-[15px]">
+            <div className="flex justify-start gap-[15px] w-full pl-4"> 
                 {/* Your Photo */}
-                <div className="flex flex-col items-center">
+                <div className="flex flex-col items-center mr-[30]">
                     <div className="w-[150px] h-[200px] flex items-center bg-white shadow-md">
                         <div
                             className="w-[140px] h-[190px] bg-cover bg-no-repeat bg-center"
                             style={{ backgroundImage: `url(${yourshroom.imageUrl})` }}
                         ></div>
                     </div>
-                    <h2 className="mt-1 text-sm">Your Photo</h2>
+                    <h2 className={styles.title}>Your Photo</h2>
                 </div>
 
                 {/* Shroom2 */}
@@ -38,7 +37,7 @@ const ComparisonTable = ({ yourshroom, shroom2 }) => {
                             style={{ backgroundImage: `url(${shroom2.imageUrl})` }}
                         ></div>
                     </div>
-                    <h2 className="mt-1 text-sm">{shroom2.title}</h2>
+                    <h2 className={styles.title}>{shroom2.title}</h2>
                 </div>
             </div>
 
@@ -65,22 +64,29 @@ const ComparisonTable = ({ yourshroom, shroom2 }) => {
                                         <line x1="6" y1="6" x2="18" y2="18" />
                                     </svg>
                                 </div>
-                                <span className="text-xs pb-[1px]">{yourshroom[key] || "?"}</span>
+                                {/* Centered Text */}
+                                <div className="flex-1 text-center">
+                                    <span className={styles.txt}>{yourshroom[key] || "?"}</span>
+                                </div>
+                                {/* Underline */}
                                 <div
                                     className="absolute bottom-0 left-0 w-full"
                                     style={{
-                                        height: "1px",
+                                        height: ".5px",
                                         backgroundColor: "#000",
                                         marginTop: "2px",
+                                        
                                     }}
                                 ></div>
                             </div>
 
                             {/* Label Column */}
-                            <div className="text-xs font-bold">{label}</div>
+                            <div className={styles.txt}>
+                                {label}
+                            </div>
 
                             {/* Shroom2 Column */}
-                            <div className="text-xs relative">
+                            <div className={styles.txt}>
                                 <span className="pb-[1px]">{shroom2[key] || "?"}</span>
                             </div>
                         </React.Fragment>

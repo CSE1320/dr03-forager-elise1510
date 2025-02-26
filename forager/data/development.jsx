@@ -179,8 +179,5 @@ export const yourshroom = {
   hab: "?"
 
 }
-// Two flavors of exporting:
-// export default dummyData; // Requires import dummyData from './data/development.js';
 
-// More than one export.
-export { warningMessage, dummyData, mushroomslist, mushroomslistpercent, pill }; // Requires import {warningMessage, dummyData} from './data/development.js';
+export { warningMessage, dummyData, pill }; // Requires import {warningMessage, dummyData} from './data/development.js';
