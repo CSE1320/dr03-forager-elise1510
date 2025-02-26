@@ -1,12 +1,12 @@
 import Message from "../../components/Message";
 import { DataMushroomListPercent } from "@/components/MushroomList";
-import {mushroomslistpercent,pill,shroom,shroom2, yourshroom} from '../../data/development'
+import {mushroomslistpercent,pill,shroom} from '../../data/development'
 import FilterSettings from '@/components/FilterSettings'
 
-import ComparisonTable from '@/components/ComparisonTable'
+import Mushroom from '@/components/Mushroom'
 export default function SandboxCopyCopyPage() {
     return (
-<ComparisonTable yourshroom={yourshroom} shroom2={shroom2} />
+        <Mushroom {...shroom}  />
     );
 }
   
