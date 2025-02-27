@@ -4,7 +4,7 @@ import styles from '../styles/mushroomCard.module.css';
 
 const MushroomCard= ({ title, imageId, imageUrl, toxic }) => {
   return (
-    <div className='bg-black w-full h-full p-10'>
+    <div>
       <div className="flex flex-col items-center">
       <div className="w-[7.142857142857143em] h-[9.214285714285714em] flex flex-col items-center bg-white shadow-md justify-start">
         <div

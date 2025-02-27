@@ -7,12 +7,12 @@ import styles from '../styles/NavBar.module.css'; // Import the styles for the N
 export default function NavBar() {
   return (
     <div className={styles.navbar}>
-      <Link href="/backgroundscreen" passHref>
+      <Link href="/mushroom" passHref>
         <div className={styles.navItem}>
           <TbMushroom />
         </div>
       </Link>
-      <Link href="/backgroundscreen" passHref>
+      <Link href="/dashboard" passHref>
         <div className={styles.navItem}>
           <FaHome />
         </div>
