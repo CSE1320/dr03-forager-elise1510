@@ -1,5 +1,32 @@
 /* Global styles */
-body, html{
+
+body,
+html {
   width: 100%;
   height: 100%;
+  font-family: N;
+}
+
+.nunito-f {
+  font-family: "Nunito", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: normal;
+  font-style: normal;
+}
+
+.nunito-b {
+  font-family: "Nunito", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 800;
+  font-style: normal;
+}
+
+.mycollec {
+  color: #324053;
+  text-align: center;
+  font-family: "Nunito", sans-serif;
+  font-size: 25px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
 }

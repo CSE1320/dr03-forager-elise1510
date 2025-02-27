@@ -1,8 +1,8 @@
 import React from 'react';
-import { nunitof } from '@/app/layout'; // Ensure this import is correct
 import styles from '../styles/comparisontable.module.css';
+import { ScaleMushroomCard } from './MushroomCard';
 //TODO: FIX BORDER
-const ComparisonTable = ({ yourshroom, shroom2 }) => {
+const ComparisonTable = ({ yourshroom, shroom2, percent }) => {
     const attributes = [
         { key: "cshape", label: "Cap Shape" },
         { key: "ccolor", label: "Cap Color" },
@@ -15,39 +15,48 @@ const ComparisonTable = ({ yourshroom, shroom2 }) => {
         { key: "hab", label: "Habitat" },
     ];
 
+    // Determine if shroom2 is toxic
+    const isShroom2Toxic = shroom2.toxic;
+
     return (
         <div className="flex flex-col items-center">
-            <div className="flex justify-start gap-[15px] w-full pl-4"> 
+            <div className="flex justify-center gap-[3em] w-full pl-4 relative">
                 {/* Your Photo */}
-                <div className="flex flex-col items-center mr-[30]">
-                    <div className="w-[150px] h-[200px] flex items-center bg-white shadow-md">
-                        <div
-                            className="w-[140px] h-[190px] bg-cover bg-no-repeat bg-center"
-                            style={{ backgroundImage: `url(${yourshroom.imageUrl})` }}
-                        ></div>
-                    </div>
-                    <h2 className={styles.title}>Your Photo</h2>
+                <div className="relative">
+                    <ScaleMushroomCard
+                        title={"Your Shroom"}
+                        imageId={yourshroom.imageId}
+                        imageUrl={yourshroom.imageUrl}
+                        toxic={false}
+                        size={1.4} 
+                    />
                 </div>
-
+                
                 {/* Shroom2 */}
-                <div className="flex flex-col items-center">
-                    <div className="w-[150px] h-[200px] flex items-center bg-white shadow-md">
-                        <div
-                            className="w-[140px] h-[190px] bg-cover bg-no-repeat bg-center"
-                            style={{ backgroundImage: `url(${shroom2.imageUrl})` }}
-                        ></div>
+                <div className="relative">
+                    <ScaleMushroomCard
+                        title={shroom2.title}
+                        imageId={shroom2.imageId}
+                        imageUrl={shroom2.imageUrl}
+                        toxic={isShroom2Toxic}
+                        size={1.4} 
+                    />
+                    {/* Percentage on top of shroom2 */}
+                    <div className="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+                        <div className={`w-20 h-10 flex items-center justify-center rounded-[10] ${isShroom2Toxic ? 'bg-red-500' : 'bg-green-500'}`}>
+                            <span className={styles.mhead}>{percent}% Match</span>
+                        </div>
                     </div>
-                    <h2 className={styles.title}>{shroom2.title}</h2>
                 </div>
             </div>
 
             {/* Attribute Table */}
             <div className="mt-2 w-full">
-                <div className="grid grid-cols-3 gap-[10px] items-center text-center w-full">
+                <div className="grid grid-cols-3 gap-[2em] items-center text-center w-full">
                     {attributes.map(({ key, label }) => (
                         <React.Fragment key={key}>
                             {/* Yourshroom Column */}
-                            <div className="flex items-center whitespace-nowrap relative">
+                            <div className="flex items-center whitespace-nowrap relative ml-5">
                                 {/* Bullet Icon */}
                                 <div className="w-4 h-4 bg-gray-400 rounded-full flex items-center justify-center mr-1">
                                     <svg
@@ -64,18 +73,15 @@ const ComparisonTable = ({ yourshroom, shroom2 }) => {
                                         <line x1="6" y1="6" x2="18" y2="18" />
                                     </svg>
                                 </div>
-                                {/* Centered Text */}
-                                <div className="flex-1 text-center">
-                                    <span className={styles.txt}>{yourshroom[key] || "?"}</span>
-                                </div>
+                                {/* Text */}
+                                <span className={styles.txt}>{yourshroom[key] || "?"}</span>
+
                                 {/* Underline */}
                                 <div
-                                    className="absolute bottom-0 left-0 w-full"
+                                    className="absolute bottom-0 left-0 w-[70%]"
                                     style={{
-                                        height: ".5px",
-                                        backgroundColor: "#000",
-                                        marginTop: "2px",
-                                        
+                                        height: "0.5px",
+                                        backgroundColor: "#000"
                                     }}
                                 ></div>
                             </div>

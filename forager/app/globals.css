@@ -27,3 +27,12 @@ html, body{
   height: 100%; 
   width: 100%;
 }
+.hder{
+  color: #FFF;
+text-align: center;
+font-family: Nunito;
+font-size: 32px;
+font-style: normal;
+font-weight: 700;
+line-height: normal;
+}

@@ -4,13 +4,18 @@ const dummyData = {
   message: "This is dummy data from a config file",
   status: "success",
 };
-
+export const percent = 97;
 const warningMessage = {
   header: "warning",
   icon: "/icons/icon_warning.svg",
   message: "This is a toxic species, proceed with caution."
 };
-
+export const shr = {
+    title: 'Death Cap',
+    imageId: 'dc',
+    imageUrl: '/images/dc.png',
+    toxic: true,
+  };
 export const mushroomslist = [
   {
     title: 'Death Cap',
@@ -35,7 +40,13 @@ export const mushroomslist = [
     imageId: 'fdc',
     imageUrl: '/images/fdc.png',
     toxic: true,
-  },
+  }, 
+  {
+    title: 'Puffball',
+    imageId: 'pb',
+    imageUrl: '/images/pb.png',
+    toxic: false,
+  }
 ];
 
 export const mushroomslistpercent = [
@@ -69,67 +80,130 @@ export const mushroomslistpercent = [
   },
 ];
 
-export const pill = [{
-  label: 'Favorites',
-  triggered: true,
-  cat: 'Tags'
-},
-{
-  label: 'Recent',
-  triggered: true,
-  cat: 'Tags'
-},
-{
-  label: 'Texas',
-  triggered: true,
-  cat: 'Regions'
-},
-{
-  label: 'North America',
-  triggered: true,
-  cat: 'Regions'
-},
-{
-  label: 'South America',
-  triggered: true,
-  cat: 'Regions'
-},
-{
-  label: 'Asia',
-  triggered: true,
-  cat: 'Regions'
-},
-{
-  label: 'Europe',
-  triggered: true,
-  cat: 'Regions'
-},
-{
-  label: 'Africa',
-  triggered: true,
-  cat: 'Regions'
-},
-{
-  label: 'Poisonous',
-  triggered: true,
-  cat: 'Category'
-},
-{
-  label: 'Medicinal',
-  triggered: true,
-  cat: 'Category'
-},
-{
-  label: 'Mythical',
-  triggered: true,
-  cat: 'Category'
-},
-{
-  label: 'Good for Broths',
-  triggered: true,
-  cat: 'Category'
-},
-]
+export var pill = [
+  {
+    label: 'Favorites',
+    triggered: true,
+    cat: 'Tags',
+  },
+  {
+    label: 'Recent',
+    triggered: false,
+    cat: 'Tags',
+  },
+  {
+    label: 'Texas',
+    triggered: true,
+    cat: 'Regions',
+  },
+  {
+    label: 'North America',
+    triggered: false,
+    cat: 'Regions',
+  },
+  {
+    label: 'South America',
+    triggered: false,
+    cat: 'Regions',
+  },
+  {
+    label: 'Asia',
+    triggered: false,
+    cat: 'Regions',
+  },
+  {
+    label: 'Europe',
+    triggered: false,
+    cat: 'Regions',
+  },
+  {
+    label: 'Africa',
+    triggered: false,
+    cat: 'Regions',
+  },
+  {
+    label: 'Poisonous',
+    triggered: false,
+    cat: 'Category',
+  },
+  {
+    label: 'Medicinal',
+    triggered: false,
+    cat: 'Category',
+  },
+  {
+    label: 'Mythical',
+    triggered: false,
+    cat: 'Category',
+  },
+  {
+    label: 'Good for Broths',
+    triggered: false,
+    cat: 'Category',
+  },
+];
+export var pills = [
+  {
+    label: 'Favorites',
+    triggered: true,
+    cat: 'Tags',
+  },
+  {
+    label: 'Recent',
+    triggered: false,
+    cat: 'Tags',
+  },
+  {
+    label: 'Texas',
+    triggered: true,
+    cat: 'Regions',
+  },
+  {
+    label: 'North America',
+    triggered: false,
+    cat: 'Regions',
+  },
+  {
+    label: 'South America',
+    triggered: false,
+    cat: 'Regions',
+  },
+  {
+    label: 'Asia',
+    triggered: false,
+    cat: 'Regions',
+  },
+  {
+    label: 'Europe',
+    triggered: false,
+    cat: 'Regions',
+  },
+  {
+    label: 'Africa',
+    triggered: false,
+    cat: 'Regions',
+  },
+  {
+    label: 'Poisonous',
+    triggered: false,
+    cat: 'Category',
+  },
+  {
+    label: 'Medicinal',
+    triggered: false,
+    cat: 'Category',
+  },
+  {
+    label: 'Mythical',
+    triggered: false,
+    cat: 'Category',
+  },
+  {
+    label: 'Good for Broths',
+    triggered: false,
+    cat: 'Category',
+  },
+];
 export const shroom = {
 
   title: 'Death Cap',
@@ -146,7 +220,7 @@ export const shroom2 = {
 
   title: 'Death Cap',
   imageId: 'dc',
-  imageUrl: '/images/fdc.png',
+  imageUrl: '/images/dc.png',
   toxic: true,
   binom: 'Amanita phalloides',
   info: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore.',
@@ -180,4 +254,76 @@ export const yourshroom = {
 
 }
 
-export { warningMessage, dummyData, pill }; // Requires import {warningMessage, dummyData} from './data/development.js';
+export var pillg1 = [
+  {
+    label: 'Favorites',
+    triggered: true,
+    cat: 'Tags',
+  },
+  {
+    label: 'Recent',
+    triggered: false,
+    cat: 'Tags',
+  }
+];
+export var pillg2 = [
+  {
+    label: 'Texas',
+    triggered: true,
+    cat: 'Regions',
+  },
+  {
+    label: 'North America',
+    triggered: false,
+    cat: 'Regions',
+  },
+  {
+    label: 'South America',
+    triggered: false,
+    cat: 'Regions',
+  },
+  {
+    label: 'Asia',
+    triggered: false,
+    cat: 'Regions',
+  },
+  {
+    label: 'Europe',
+    triggered: false,
+    cat: 'Regions',
+  },
+  {
+    label: 'Africa',
+    triggered: false,
+    cat: 'Regions',
+  },
+  {
+    label: 'Poisonous',
+    triggered: false,
+    cat: 'Category',
+  }
+];
+
+export var pillg3 =[
+  {
+    label: 'Medicinal',
+    triggered: false,
+    cat: 'Category',
+  },
+  {
+    label: 'Mythical',
+    triggered: false,
+    cat: 'Category',
+  },
+  {
+    label: 'Good for Broths',
+    triggered: false,
+    cat: 'Category',
+  }
+];
+
+export var pl = [pillg1,pillg2,pillg3]
+
+
+export default pills;
+export { warningMessage, dummyData }; // Requires import {warningMessage, dummyData} from './data/development.js';

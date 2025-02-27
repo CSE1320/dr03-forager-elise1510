@@ -16,10 +16,10 @@ const nunitof = Nunito({
   subsets: ["latin"],
 });
 
-export const metadata = {
+/* export const metadata = {
   title: "Forager",
   description: "A CSE3340 Interaction Design Project",
-};
+}; */
 
 export default function RootLayout({ children }) {
   return (

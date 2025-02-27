@@ -1,10 +1,8 @@
-'use client'; // Mark this as a Client Component if needed
-
 import React from 'react';
 
-const Search = () => {
+const Search = ({ setSearchTerm, onFilterClick }) => {
   return (
-    <div className="flex items-center justify-center gap-3 w-[337.336px] h-[39px] bg-white rounded-lg shadow-sm border border-gray-200">
+    <div className="flex items-center justify-center gap-3 w-[337.336px] h-[39px] bg-white rounded-[19.5px]">
       {/* Search Icon (Left) */}
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -26,16 +24,18 @@ const Search = () => {
         type="text"
         placeholder="Search for a mushroom"
         className="flex-1 text-center text-black text-opacity-50 font-nunito text-base font-normal leading-normal outline-none placeholder:text-black placeholder:text-opacity-50"
+        onChange={(e) => setSearchTerm(e.target.value)} // Update search term on input change
       />
 
       {/* Filter Icon (Right) */}
       <svg
+        onClick={onFilterClick} // Trigger the FilterSettings screen
         xmlns="http://www.w3.org/2000/svg"
         width="20"
         height="22"
         viewBox="0 0 20 22"
         fill="none"
-        className="w-[19.336px] h-[21.753px] flex-shrink-0"
+        className="w-[19.336px] h-[21.753px] flex-shrink-0 cursor-pointer"
       >
         <path
           d="M13.293 20.3967C13.3413 20.7592 13.2205 21.1458 12.9426 21.3996C12.8308 21.5116 12.698 21.6005 12.5518 21.6611C12.4057 21.7217 12.249 21.753 12.0907 21.753C11.9325 21.753 11.7758 21.7217 11.6296 21.6611C11.4834 21.6005 11.3506 21.5116 11.2388 21.3996L6.39342 16.5542C6.26171 16.4253 6.16156 16.2677 6.10077 16.0937C6.03999 15.9198 6.02022 15.7341 6.04301 15.5513V9.36458L0.255088 1.9575C0.058865 1.7056 -0.0296749 1.38627 0.00881546 1.06929C0.0473059 0.752311 0.209697 0.463452 0.460505 0.265833C0.690089 0.0966667 0.943838 0 1.20967 0H18.1263C18.3922 0 18.6459 0.0966667 18.8755 0.265833C19.1263 0.463452 19.2887 0.752311 19.3272 1.06929C19.3657 1.38627 19.2771 1.7056 19.0809 1.9575L13.293 9.36458V20.3967ZM3.67467 2.41667L8.45967 8.53083V15.2008L10.8763 17.6175V8.51875L15.6613 2.41667H3.67467Z"

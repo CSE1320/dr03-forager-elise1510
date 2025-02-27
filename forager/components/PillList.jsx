@@ -31,4 +31,31 @@ const PillList = ({ pills }) => {
   );
 };
 
+
+const TitlePillList = ({ pills, title }) => {
+  return (
+    <div>
+      <h2 className={styles.cat}>{title}</h2>
+      <div className={styles.pillContainer}>
+        {pills.map((pill, index) => (
+          <Pill key={index} label={pill.label} triggered={pill.triggered} />
+        ))}
+      </div>
+    </div>
+  );
+};
+
+const DTitlePillList = ({ pills, title }) => {
+  return (
+    <div>
+      <h2 className={styles.title}>{title}</h2>
+      <div className={styles.pillContainer}>
+        {pills.map((pill, index) => (
+          <Pill key={index} label={pill.label} triggered={pill.triggered} />
+        ))}
+      </div>
+    </div>
+  );
+};
 export default PillList;
+export {TitlePillList,DTitlePillList,PillList};

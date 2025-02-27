@@ -59,3 +59,13 @@
 .cover {
   background: lightgray 50% / cover no-repeat;
 }
+
+.scaletitle {
+color: #203B5F;
+text-align: center;
+font-family: Nunito;
+font-size: 25px;
+font-style: normal;
+font-weight: 700;
+line-height: normal;
+}

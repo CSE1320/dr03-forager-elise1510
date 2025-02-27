@@ -1,13 +1,12 @@
 /* src/components/BackgroundScreen.css */
 .title {
-  color: #324053;
-  text-align: center;
-  font-family: Nunito;
-  font-size: 30px;
-  font-style: normal;
-  font-weight: 600;
-  line-height: normal;
-  margin-top: 22px;
+color: #203B5F;
+text-align: center;
+font-family: Nunito;
+font-size: 25px;
+font-style: normal;
+font-weight: 700;
+line-height: normal;
 }
 
 
@@ -35,6 +34,15 @@
 text-align: center;
 font-family: Nunito;
 font-size: 16px;
+font-style: normal;
+font-weight: 700;
+line-height: normal;
+}
+.mhead{
+  color: #FFF;
+text-align: center;
+font-family: Nunito;
+font-size: 13px;
 font-style: normal;
 font-weight: 700;
 line-height: normal;

@@ -2,28 +2,27 @@
 import React, { useState } from 'react';
 import styles from '../styles/pill.module.css';
 
-const Pill = ({ label }) => {
+const Pill = ({ label, triggered }) => {
     // State to manage the triggered state
-    const [triggered, setTriggered] = useState(false);
+    const [triggeredState, setTriggered] = useState(triggered);
 
     // Determine pill color and text color based on the triggered state
-    const pillColor = triggered ? '#579076' : '#D9D9D9';
-    const textColor = triggered ? 'white' : '#7C7C7C';
+    const pillColor = triggeredState ? '#579076' : '#D9D9D9';
+    const textColor = triggeredState ? 'white' : '#7C7C7C';
 
     // Toggle the triggered state on click
     const handleClick = () => {
-        setTriggered(!triggered);
+        setTriggered(!triggeredState);
     };
 
     return (
         <div
             className={styles.pill}
             style={{ backgroundColor: pillColor, color: textColor }}
-            onClick={handleClick} // Add onClick handler
+            onClick={handleClick} 
         >
             <p className={styles.label}>{label}</p>
         </div>
     );
 };
-
 export default Pill;
