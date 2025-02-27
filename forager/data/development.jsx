@@ -79,7 +79,36 @@ export const mushroomslistpercent = [
     percent: '70'
   },
 ];
-
+export const mushroomslistpercent2 = [
+  {
+    title: 'Paddy Straw',
+    imageId: 'ps',
+    imageUrl: '/images/ps.png',
+    toxic: false,
+    percent: '90'
+  },
+  {
+    title: 'Destroying Angel',
+    imageId: 'da',
+    imageUrl: '/images/da.png',
+    toxic: true,
+    percent: '80'
+  },
+  {
+    title: 'False Death Cap',
+    imageId: 'fdc',
+    imageUrl: '/images/fdc.png',
+    toxic: true,
+    percent: '70'
+  },
+    {
+    title: 'Puffball',
+    imageId: 'pf',
+    imageUrl: '/images/pb.png',
+    toxic: false,
+    percent: '60'
+  },
+];
 export var pill = [
   {
     label: 'Favorites',

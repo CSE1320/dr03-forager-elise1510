@@ -69,3 +69,13 @@ font-style: normal;
 font-weight: 700;
 line-height: normal;
 }
+
+.wscaletitle {
+color: #203B5F;
+text-align: left;
+font-family: Nunito;
+font-size: 25px;
+font-style: normal;
+font-weight: 700;
+line-height: normal;
+}
