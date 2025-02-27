@@ -1,6 +1,6 @@
-'use client'; // Add this line at the top of your file
 
-import React, { useRef } from 'react';
+
+import React from 'react';
 import '../styles/BackgroundScreen.module.css';
 import '../app/nobarlayout'
 

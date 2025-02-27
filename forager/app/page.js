@@ -5,6 +5,6 @@ import SandboxCopyCopyPage from './sandboxcopycopy/page';
 export default function Home() {
   //return <DashboardPage />;  // Render the DashboardPage as the default for the '/' route
   //return <Sandbox />;  // Render the DashboardPage as the default for the '/' route
-  //return <SandboxCopyPage />;  // Render the Sandbox as the default for the '/' route
-   return <SandboxCopyCopyPage />;  // Render the Sandbox as the default for the '/' route
+  return <SandboxCopyPage />;  // Render the Sandbox as the default for the '/' route
+  // return <SandboxCopyCopyPage />;  // Render the Sandbox as the default for the '/' route
 }

@@ -1,15 +1,10 @@
-'use client'; // Add this line at the top of your file
-
 import React, { useRef } from 'react';
 import '../styles/BackgroundScreen.module.css';
 
 const BackgroundScreen = () => {
   const galleryButtonRef = useRef(null);
 
-  const handleClick = () => {
-    // Your gallery button click logic here
-    console.log('Gallery button clicked');
-  };
+
 
   return (
     <div className="background-screen">
