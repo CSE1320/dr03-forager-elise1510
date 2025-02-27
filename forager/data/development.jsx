@@ -10,6 +10,11 @@ const warningMessage = {
   icon: "/icons/icon_warning.svg",
   message: "This is a toxic species, proceed with caution."
 };
+export const msg = {
+  header: "ATTENTION!",
+  icon: "/icons/icon_warning.svg",
+  message: "Our system can make mistakes! Remember to verify important information and use your own judgement to determine if any mushroom is safe. Be sure to use the “Report Error” button if you suspect a mistake."
+};
 export const shr = {
     title: 'Death Cap',
     imageId: 'dc',
@@ -241,8 +246,8 @@ export const shroom = {
   toxic: true,
   binom: 'Amanita phalloides',
   info: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore.',
-  facts: ["Cap Diameter: 5-15cm", "Gill Color: White", "Stem Color: White", "Habitat: Temperate regions"]
-
+  facts: ["Cap Diameter: 5-15cm", "Gill Color: White", "Stem Color: White", "Habitat: Temperate regions"],
+  percent:97,
 }
 
 export const shroom2 = {

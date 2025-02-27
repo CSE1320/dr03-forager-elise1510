@@ -6,7 +6,7 @@ import Message from '@/components/Message';
 
 export default function MushroomComparisonPage() {
   return (
-    <div className="page">
+    <div className="page bg-[#F2F2F2]">
       {/* Top Navigation Bar */}
       <div className="fixed top-0 left-0 right-0 flex items-center justify-between p-4 bg-[#579076] rounded-b-[40px] shadow-md z-50">
         <button className="flex items-center text-white">

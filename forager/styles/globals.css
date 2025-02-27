@@ -6,7 +6,18 @@ html {
   height: 100%;
   font-family: N;
 }
-
+.x.blurred {
+  filter: blur(5px);
+}
+.comp{
+  color: #888787;
+text-align: center;
+font-family: Nunito;
+font-size: 14px;
+font-style: normal;
+font-weight: 400;
+line-height: normal;
+}
 .nunito-f {
   font-family: "Nunito", sans-serif;
   font-optical-sizing: auto;

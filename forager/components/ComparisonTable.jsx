@@ -51,8 +51,8 @@ const ComparisonTable = ({ yourshroom, shroom2, percent }) => {
             </div>
 
             {/* Attribute Table */}
-            <div className="mt-2 w-full">
-                <div className="grid grid-cols-3 gap-[2em] items-center text-center w-full">
+            <div className="mt-2 w-[85%] bg-[white] ">
+                <div className="grid grid-cols-3 gap-[2em] items-center text-center w-full mt-[1em]">
                     {attributes.map(({ key, label }) => (
                         <React.Fragment key={key}>
                             {/* Yourshroom Column */}

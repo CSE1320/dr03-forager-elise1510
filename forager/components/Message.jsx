@@ -1,5 +1,5 @@
 import React from 'react';
-import {warningMessage} from '../data/development';
+import {warningMessage,msg} from '../data/development';
 import "../styles/globals.css";
 
 const Message = () => {
@@ -26,5 +26,18 @@ const Message = () => {
     );
 };*/
 
-
+const BigMessage = () => {
+    return (
+        <div className='justify-center'>
+            <div className="message bg-red-500 rounded-xl bg-[#FF5050] nunito-f w-full font-medium text-white px-4 py-auto  mx-auto  w-[50%] items-center">
+                <div className="header flex items-center">
+                    <img width="27px" height="27px" className="" src={msg.icon}></img>
+                    <h1 className="uppercase">{msg.header}</h1>
+                </div>
+                <p className="">{msg.message}</p>
+            </div>
+        </div>
+    );
+};
 export default Message;
+export {BigMessage,Message};
