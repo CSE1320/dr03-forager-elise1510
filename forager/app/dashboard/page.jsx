@@ -7,7 +7,7 @@ import Search from '@/components/Search';
 import { DataMushroomList } from '@/components/MushroomList';
 import { DTitlePillList } from '@/components/PillList';
 import { pills, mushroomslist } from '@/data/development';
-import FilterSettings from '@/components/FilterSettings';
+import FilterSettings, { TitleFilterSettings } from '@/components/FilterSettings';
 import Link from 'next/link';
 export default function DashboardPage() {
   //localStorage.removeItem('count');
@@ -18,7 +18,16 @@ export default function DashboardPage() {
   const [showFilterSettings, setShowFilterSettings] = useState(false); // State for FilterSettings visibility
   const [count, setCount] = useState(getCount); 
 
-  const triggeredPills = pills.filter((pill) => pill.triggered);
+  const [pillsState, setPillsState] = useState(pills);
+
+  const handlePillClick = (label) => {
+    console.log(label);
+      setPillsState((prevPills) =>
+          prevPills.map((pill) =>
+              pill.label === label ? { ...pill, triggered: !pill.triggered } : pill
+          )
+      );
+  };
 
   // Update localStorage whenever 'count' changes
   useEffect(() => {
@@ -28,7 +37,7 @@ export default function DashboardPage() {
   // Handle clicks on mushroom items
   const handleMushroomItemClick = (e) => {
     console.log(count);
-    setCount((prevCount) => prevCount + 1); 
+    //setCount((prevCount) => prevCount + 1); 
     //setCount((0));
     window.location.href="/mushroom";
 /*     <Link href="/mushroom" passHref>
@@ -42,7 +51,7 @@ export default function DashboardPage() {
     );
     setFilteredMushrooms(filtered);
   }, [searchTerm]);
-
+  const triggeredPills = pillsState.filter((pill) => pill.triggered);
   return (
     <div className="page bg-[#397367] relative">
       <div className="w-full h-[18%]">
@@ -59,25 +68,19 @@ export default function DashboardPage() {
         <div className="pt-[7%] ml-[5.5%]">
           <Search setSearchTerm={setSearchTerm} onFilterClick={() => setShowFilterSettings(true)} />
         </div>
-        <div className="ml-[7%] mb-[2%]">
-          <DTitlePillList title="My Collection" pills={triggeredPills} />
-        </div>
-        {/* Wrap the MushroomList in a div with click handler */}
-        <div onClick={handleMushroomItemClick}>
-          <DataMushroomList
-            mushrooms={filteredMushrooms}
-          />
-        </div>
-      </div>
-      <NavBar />
-      {showFilterSettings && (
-        <div className="absolute inset-0 bg-black bg-opacity-50 z-40 flex items-start">
-          <FilterSettings
-            pills={pills}
-            onClose={() => setShowFilterSettings(false)} // Close the filter settings
-          />
-        </div>
-      )}
+            <div className="ml-[7%] mb-[2%]">
+                <DTitlePillList title="My Collection" pills={triggeredPills} onPillClick={handlePillClick} />
+            </div>
+            <div onClick={handleMushroomItemClick}>
+                <DataMushroomList mushrooms={filteredMushrooms} />
+            </div> 
+            </div>
+            <NavBar /> 
+            {showFilterSettings && (
+                <div className="absolute inset-0 bg-black bg-opacity-50 z-40 flex items-start">
+                    <TitleFilterSettings pills={pillsState} onPillClick={handlePillClick} onClose={() => setShowFilterSettings(false)} />
+                </div>
+            )}
     </div>
   );
 }

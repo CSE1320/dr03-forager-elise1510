@@ -9,9 +9,9 @@ import shr from '../data/development'
 import MushroomPage from './mushroom/page';
 
 export default function Home() {
-return <MushroomPage/>
+// return <MushroomPage/>
   //return <MushroomComparisonPage></MushroomComparisonPage>
- //return <DashboardPage />;  // Render the DashboardPage as the default for the '/' route
+ return <DashboardPage />;  // Render the DashboardPage as the default for the '/' route
   //return <Sandbox />;  // Render the DashboardPage as the default for the '/' route
  //return <SandboxCopyPage />;  // Render the Sandbox as the default for the '/' route
   // return <SandboxCopyCopyPage />;  // Render the Sandbox as the default for the '/' route

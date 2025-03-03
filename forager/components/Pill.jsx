@@ -25,4 +25,19 @@ const Pill = ({ label, triggered }) => {
         </div>
     );
 };
+const DPill = ({ label, triggered, onPillClick }) => {
+    const pillColor = triggered ? '#579076' : '#D9D9D9';
+    const textColor = triggered ? 'white' : '#7C7C7C';
+
+    return (
+        <div
+            className={styles.pill}
+            style={{ backgroundColor: pillColor, color: textColor }}
+            onClick={() => onPillClick(label)}
+        >
+            <p className={styles.label}>{label}</p>
+        </div>
+    );
+};
 export default Pill;
+export{Pill,DPill}

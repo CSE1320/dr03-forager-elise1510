@@ -9,11 +9,7 @@ const BackgroundScreen = () => {
   return (
     <div>
       <div className="overlay absolute bottom-0 left-0 w-full h-[119px] bg-black/50">
-        <div className="cam_icon w-[38px] h-[38px] shrink-0 box-border absolute left-[52px] top-[35px]">
-          <svg xmlns="http://www.w3.org/2000/svg" width="38" height="38" viewBox="0 0 38 38" fill="none">
-            <path fillRule="evenodd" clipRule="evenodd" d="M32.4583 22.3822V8.7085H5.54163V21.9293L12.9833 15.9127C13.7148 15.3189 14.8912 15.3474 15.5958 15.9681L22.6844 22.1953L26.2975 19.1237C27.029 18.4998 28.1944 18.5125 28.9037 19.1506L32.4583 22.3822ZM4.73729 6.3335H33.2626C34.1129 6.3335 34.8333 7.09508 34.8333 8.03558V29.9647C34.8333 30.9084 34.1303 31.6668 33.2626 31.6668H4.73729C3.88704 31.6668 3.16663 30.9052 3.16663 29.9647V8.03558C3.16663 7.09191 3.86963 6.3335 4.73729 6.3335Z" fill="white" />
-          </svg>
-        </div>
+
         <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[73px] h-[73px] flex justify-center items-center">
           <svg xmlns="http://www.w3.org/2000/svg" width="73" height="73" viewBox="0 0 73 73" fill="none" className="w-full h-full">
             <circle cx="36.5" cy="36.5" r="36.5" fill="white" />

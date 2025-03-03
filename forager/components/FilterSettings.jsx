@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from '../styles/pill.module.css';
-import {PillList,TitlePillList} from './PillList';
+import {PillList,TitlePillList,DTitlePillList} from './PillList';
 import { IoClose } from "react-icons/io5";
 const FilterSettings = ({ pills, onClose }) => {
     return (
@@ -19,8 +19,8 @@ const FilterSettings = ({ pills, onClose }) => {
       </div>
     );
   };
-  const TitleFilterSettings = ({ pills = [] }) => {
-    // Ensure pills is an array before using reduce
+
+  const TitleFilterSettings = ({ pills = [], onPillClick, onClose }) => {
     const groupedPills = pills.reduce((acc, pill) => {
         if (!acc[pill.cat]) {
             acc[pill.cat] = [];
@@ -30,21 +30,23 @@ const FilterSettings = ({ pills, onClose }) => {
     }, {});
 
     return (
-        <div>
-            <div className='mb-16'>
-                <IoClose
-                    size={48}
-                    className="absolute right-[21px] top-[21px] cursor-pointer"
-                />
-                <h2 className="mb-20px absolute top-[21px] left-1/2 transform -translate-x-1/2 text-black text-center font-nunito text-lg font-bold">
-                    FILTER
-                </h2>
+        <div className="relative w-full max-w-md mx-auto mt-10 bg-white rounded-t-3xl shadow-lg z-50 h-full flex flex-col">
+            {/* Close Button */}
+            <IoClose
+                size={36}
+                className="absolute right-5 top-5 cursor-pointer"
+                onClick={onClose}
+            />
+            {/* Title */}
+            <h2 className="mt-8 text-black text-center font-nunito text-lg font-bold">
+                FILTER
+            </h2>
+            {/* Scrollable Pills Section */}
+            <div className="mt-10 p-4 flex-grow overflow-auto">
+                {Object.keys(groupedPills).map((category) => (
+                    <DTitlePillList key={category} title={category} pills={groupedPills[category]} onPillClick={onPillClick} />
+                ))}
             </div>
-
-            {/* Render a list of TitlePillList components */}
-            {Object.keys(groupedPills).map((category) => (
-                <TitlePillList key={category} title={category} pills={groupedPills[category]} />
-            ))}
         </div>
     );
 };
