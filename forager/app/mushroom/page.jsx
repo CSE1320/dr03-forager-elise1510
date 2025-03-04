@@ -1,19 +1,39 @@
+// MushroomPage
 'use client';
 
 import React, { useState, useEffect } from 'react';
 import NavBar from '../../components/NavBar';
 import "../../styles/globals.css";
-import { mushroomslistpercent2, pill, shroom, shroom2, yourshroom, percent } from '../../data/development';
+import { shrooms,mushroomslistpercent2 } from '../../data/development';
 import { Message, BigMessage } from '@/components/Message';
 import Mushroom from '@/components/Mushroom';
 import { DataMushroomListPercent } from '@/components/MushroomList';
 import { IoChevronBack, IoClose } from 'react-icons/io5';
-import { IoChevronForward,IoArrowForwardOutline } from "react-icons/io5";
+import { IoChevronForward, IoArrowForwardOutline } from "react-icons/io5";
+import { useSearchParams } from 'next/navigation';
 
 export default function MushroomPage() {
-  const getCount = () => Number(localStorage.getItem('count')) || 0;
-  const [count] = useState(getCount);
+  const searchParams = useSearchParams();
+  const imageId = searchParams.get('imageId');
+/*   console.log(imageId);
+  console.log(shrooms); */
+  const selectedMushroom = shrooms.find(shroom => shroom.imageId === imageId);
+  //console.log(selectedMushroom);
+
+  const [count, setCount] = useState(0); // Initialize count to 0
   const [isMessageVisible, setMessageVisible] = useState(true);
+
+  // Fetch count from localStorage after component mounts
+  useEffect(() => {
+    const getCount = () => Number(localStorage.getItem('count')) || 0;
+    setCount(getCount());
+  }, []);
+
+  // Update localStorage whenever count changes
+  useEffect(() => {
+    localStorage.setItem('count', count);
+  }, [count]);
+
   useEffect(() => {
     if (count !== 0) {
       setMessageVisible(false);
@@ -25,9 +45,16 @@ export default function MushroomPage() {
   const closeMessage = () => {
     setMessageVisible(false);
   };
+
   const compClick = () => {
-    window.location.href = '/comparison'
+    window.location.href = '/comparison';
+  };
+
+  // Handle case where selectedMushroom is not found
+  if (!selectedMushroom) {
+    return <div>Mushroom not found</div>;
   }
+
   return (
     <div className="page">
       {isMessageVisible && (
@@ -51,7 +78,7 @@ export default function MushroomPage() {
         {/* Top Navigation Bar */}
         <div className="fixed top-0 left-0 right-0 flex items-center justify-between p-4 bg-[#579076] rounded-b-[40px] shadow-md z-50">
           <button className="flex items-center text-white">
-          <IoChevronBack/>
+            <IoChevronBack />
           </button>
           <div className="hder">Match Results</div>
           <div className="w-10"></div> {/* Empty div for balanced spacing */}
@@ -66,21 +93,6 @@ export default function MushroomPage() {
               </div>
               <div className="flex items-center gap-2 p-2 rounded-[10px] bg-[#FF5050] cursor-pointer">
                 <span className="text-white text-xs font-nunito font-normal">Report Error</span>
-{/*                 <svg
-                  width="12"
-                  height="12"
-                  viewBox="0 0 12 12"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M1 6H11M11 6L6 1M11 6L6 11"
-                    stroke="white"
-                    strokeWidth="1.5"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                </svg> */}
                 <IoArrowForwardOutline />
               </div>
             </div>
@@ -104,7 +116,8 @@ export default function MushroomPage() {
               </div>
             </div>
 
-            <Mushroom {...shroom} />
+            {/* Render the Mushroom component with the selected mushroom data */}
+            <Mushroom {...selectedMushroom} />
           </div>
           <div>
             <DataMushroomListPercent mushrooms={mushroomslistpercent2} />
@@ -115,4 +128,4 @@ export default function MushroomPage() {
       </div>
     </div>
   );
-};
+}

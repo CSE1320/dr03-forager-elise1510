@@ -1,6 +1,6 @@
 'use client'
 import React from 'react';
-import { MushroomCard, MushroomCardPercent } from './MushroomCard'; // Ensure correct import
+import { MushroomCard, MushroomCardPercent,DashboardMushroomCard } from './MushroomCard'; // Ensure correct import
 import styles from '../styles/mushroomList.module.css';
 import { useState } from "react";
 import { IoClose } from "react-icons/io5";
@@ -89,4 +89,20 @@ const DataMushroomListPercent = ({ mushrooms }) => {
     </div>
   );
 };
-export { DataMushroomList, DataMushroomListPercent };
+const DashboardDataMushroomList = ({ mushrooms,onCardClick }) => {
+  return (
+    <div className="flex flex-wrap gap-4 px-6 justify-start items-start w-full self-start">
+      {mushrooms.map((mushroom, index) => (
+        <DashboardMushroomCard
+          key={index}
+          title={mushroom.title}
+          imageId={mushroom.imageId}
+          imageUrl={mushroom.imageUrl}
+          toxic={mushroom.toxic}
+          onCardClick={onCardClick}
+        />
+      ))}
+    </div>
+  );
+};
+export { DataMushroomList, DataMushroomListPercent,DashboardDataMushroomList };

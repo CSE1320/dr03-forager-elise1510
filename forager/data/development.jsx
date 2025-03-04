@@ -359,5 +359,59 @@ export var pillg3 =[
 export var pl = [pillg1,pillg2,pillg3]
 
 
+export const shrooms = [
+    {
+      title: 'Death Cap',
+      imageId: 'dc',
+      imageUrl: '/images/dc.png',
+      toxic: true,
+      binom: 'Amanita phalloides',
+      info: 'A highly toxic mushroom responsible for most mushroom poisoning fatalities worldwide.',
+      facts: ["Cap Diameter: 5-15cm", "Gill Color: White", "Stem Color: White", "Habitat: Temperate regions"],
+      percent: 97,
+    },
+    {
+      title: 'Paddy Straw',
+      imageId: 'ps',
+      imageUrl: '/images/ps.png',
+      toxic: false,
+      binom: 'Volvariella volvacea',
+      info: 'A widely cultivated edible mushroom, especially in tropical and subtropical regions.',
+      facts: ["Cap Diameter: 4-12cm", "Gill Color: Pink", "Stem Color: Light Brown", "Habitat: Rice straw beds, warm climates"],
+      percent: 60,
+    },
+    {
+      title: 'Destroying Angel',
+      imageId: 'da',
+      imageUrl: '/images/da.png',
+      toxic: true,
+      binom: 'Amanita bisporigera',
+      info: 'A deadly white mushroom that contains potent amatoxins, causing fatal liver damage.',
+      facts: ["Cap Diameter: 5-10cm", "Gill Color: White", "Stem Color: White", "Habitat: Woodlands, often near oak and pine"],
+      percent: 80,
+    },
+    {
+      title: 'False Death Cap',
+      imageId: 'fdc',
+      imageUrl: '/images/fdc.png',
+      toxic: true,
+      binom: 'Amanita citrina',
+      info: 'A lookalike of the Death Cap, though less toxic, with a yellowish cap and a distinctive smell of raw potatoes.',
+      facts: ["Cap Diameter: 6-12cm", "Gill Color: White", "Stem Color: Pale Yellow", "Habitat: Deciduous and coniferous forests"],
+      percent: 70,
+    },
+    {
+      title: 'Puffball',
+      imageId: 'pf',
+      imageUrl: '/images/pb.png',
+      toxic: false,
+      binom: 'Lycoperdon perlatum',
+      info: 'Puffballs are found growing on the ground in woods, and are usually found from summer to late autumn. The fruiting body of a puffball mushroom develops within a few weeks and soon begins to decompose and rot.',
+      facts: ["Cap Diameter: 10-100cm", "Gill Color: White", "Stem Color: Pale Yellow", "Habitat:Woods"],
+      percent: '60'
+    },
+  ];
+
+
 export default pills;
 export { warningMessage, dummyData }; // Requires import {warningMessage, dummyData} from './data/development.js';
