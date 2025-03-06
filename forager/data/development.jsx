@@ -108,7 +108,7 @@ export const mushroomslistpercent2 = [
   },
     {
     title: 'Puffball',
-    imageId: 'pf',
+    imageId: 'pb',
     imageUrl: '/images/pb.png',
     toxic: false,
     percent: '60'
@@ -119,6 +119,7 @@ export var pill = [
     label: 'Favorites',
     triggered: true,
     cat: 'Tags',
+
   },
   {
     label: 'Recent',
@@ -174,7 +175,7 @@ export var pill = [
     label: 'Good for Broths',
     triggered: false,
     cat: 'Category',
-  },
+  }
 ];
 export var pills = [
   {
@@ -236,7 +237,7 @@ export var pills = [
     label: 'Good for Broths',
     triggered: false,
     cat: 'Category',
-  },
+  }
 ];
 export const shroom = {
 
@@ -248,7 +249,7 @@ export const shroom = {
   info: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore.',
   facts: ["Cap Diameter: 5-15cm", "Gill Color: White", "Stem Color: White", "Habitat: Temperate regions"],
   percent:97,
-}
+};
 
 export const shroom2 = {
 
@@ -267,7 +268,7 @@ export const shroom2 = {
   scolor: "White",
   sring: "Absent",
   hab: "Near Oak/Beech Trees"
-}
+};
 export const yourshroom = {
 
   title: 'Death Cap',
@@ -286,20 +287,25 @@ export const yourshroom = {
   sring: "Absent",
   hab: "?"
 
-}
+};
 
-export var pillg1 = [
+/* export var pillg1 = [
   {
     label: 'Favorites',
     triggered: true,
-    cat: 'Tags',
+    cat: 'Tagx',
+    applicableshrooms: ["dc", "ps", "da","fdc", "pf"]
   },
   {
     label: 'Recent',
-    triggered: false,
-    cat: 'Tags',
+    triggered: true,
+    cat: 'Tagx',
+    applicableshrooms: ["dc", "ps", "da","fdc", "pf"]
   }
 ];
+
+
+
 export var pillg2 = [
   {
     label: 'Texas',
@@ -310,31 +316,37 @@ export var pillg2 = [
     label: 'North America',
     triggered: false,
     cat: 'Regions',
+    applicableshrooms: ["dc", "ps", "da","fdc", "pf"]
   },
   {
     label: 'South America',
     triggered: false,
     cat: 'Regions',
+    applicableshrooms: ["dc", "ps", "da","fdc", "pf"]
   },
   {
     label: 'Asia',
     triggered: false,
     cat: 'Regions',
+    applicableshrooms: ["dc", "ps", "da","fdc", "pf"]
   },
   {
     label: 'Europe',
     triggered: false,
     cat: 'Regions',
+    applicableshrooms: ["dc", "ps", "da","fdc", "pf"]
   },
   {
     label: 'Africa',
     triggered: false,
     cat: 'Regions',
+    applicableshrooms: ["dc", "ps", "da","fdc", "pf"]
   },
   {
     label: 'Poisonous',
     triggered: false,
     cat: 'Category',
+    applicableshrooms: ["dc", "ps", "da","fdc", "pf"]
   }
 ];
 
@@ -343,20 +355,23 @@ export var pillg3 =[
     label: 'Medicinal',
     triggered: false,
     cat: 'Category',
+    applicableshrooms: ["dc", "ps", "da","fdc", "pf"]
   },
   {
     label: 'Mythical',
     triggered: false,
     cat: 'Category',
+    applicableshrooms: ["dc", "ps", "da","fdc", "pf"]
   },
   {
     label: 'Good for Broths',
     triggered: false,
     cat: 'Category',
+    applicableshrooms: ["dc", "ps", "da","fdc", "pf"]
   }
-];
+]; */
 
-export var pl = [pillg1,pillg2,pillg3]
+//export var pl = [pillg1,pillg2,pillg3];
 
 
 export const shrooms = [
@@ -402,16 +417,39 @@ export const shrooms = [
     },
     {
       title: 'Puffball',
-      imageId: 'pf',
+      imageId: 'pb',
       imageUrl: '/images/pb.png',
       toxic: false,
       binom: 'Lycoperdon perlatum',
       info: 'Puffballs are found growing on the ground in woods, and are usually found from summer to late autumn. The fruiting body of a puffball mushroom develops within a few weeks and soon begins to decompose and rot.',
       facts: ["Cap Diameter: 10-100cm", "Gill Color: White", "Stem Color: Pale Yellow", "Habitat:Woods"],
-      percent: '60'
+      percent: 60
+    },
+    {
+      title: 'Horse Mushroom',
+      imageId: 'hm',
+      imageUrl: '/images/hm.jpg',
+      toxic: false,
+      binom: 'Agaricus arvensis',
+      info: 'A horse mushroom in its prime is a thing of great beauty and superb flavour. It also has the curious dual distinction of  being commonly misidentified and widely underrated.',
+      facts: ["Cap Diameter: 3-20", "Gill Color: White", "Stem Color: Pale Yellow", "Habitat:Woods"],
+      percent: 0
     },
   ];
 
-
+  let idk = [
+    {
+      label: 'Favorites',
+      triggered: false,
+      cat: 'Tagx',
+      applicableshrooms: ["dc", "ps", "da","fdc", "pf"],
+    },
+    {
+      label: 'Recent',
+      triggered: true,
+      cat: 'false',
+      applicableshrooms: ["dc", "ps", "da","fdc", "pf"]
+    },
+  ];
 export default pills;
-export { warningMessage, dummyData }; // Requires import {warningMessage, dummyData} from './data/development.js';
+export { warningMessage, dummyData,idk }; // Requires import {warningMessage, dummyData} from './data/development.js';

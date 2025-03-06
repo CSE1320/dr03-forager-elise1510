@@ -15,17 +15,17 @@ import { useSearchParams } from 'next/navigation';
 export default function MushroomPage() {
   const searchParams = useSearchParams();
   const imageId = searchParams.get('imageId');
-/*   console.log(imageId);
-  console.log(shrooms); */
+console.log(imageId);
+  console.log(shrooms); 
   const selectedMushroom = shrooms.find(shroom => shroom.imageId === imageId);
-  //console.log(selectedMushroom);
-
-  const [count, setCount] = useState(0); // Initialize count to 0
+  console.log(selectedMushroom);
+  const getCount = () => Number(localStorage.getItem('count')) || 0;
+  const [count, setCount] = useState(getCount); // Initialize count to 0
   const [isMessageVisible, setMessageVisible] = useState(true);
 
   // Fetch count from localStorage after component mounts
   useEffect(() => {
-    const getCount = () => Number(localStorage.getItem('count')) || 0;
+    
     setCount(getCount());
   }, []);
 
