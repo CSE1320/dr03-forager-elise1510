@@ -42,7 +42,7 @@ export default function DashboardPage() {
     router.push(`/mushroom?imageId=${encodeURIComponent(imageId)}`);
 
   };
-
+  let triggeredPills = pillsState.filter((pill) => pill.triggered);
   useEffect(() => {
     // Get all triggered pills
     const activePills = pillsState.filter(pill => pill.triggered);
@@ -50,70 +50,82 @@ export default function DashboardPage() {
 
     // If no pills are triggered, filter only by search term
     if (activePills.length === 0) {
-      const filtered = mushroomslist.filter(mushroom =>
-        mushroom.title.toLowerCase().includes(searchTerm.toLowerCase())
-      );
-      setFilteredMushrooms(filtered);
-      return;
+        const filtered = mushroomslist.filter(mushroom =>
+            mushroom.title.toLowerCase().includes(searchTerm.toLowerCase())
+        );
+        setFilteredMushrooms(filtered);
+        return;
     }
 
     // Initialize a map to count occurrences of each mushroom in active pills
     const mushroomCountMap = new Map();
 
+    // Check if "Favorites" is currently triggered
+    const isFavoritesTriggered = activePills.some(pill => pill.label === "Favorites");
 
-
+    // Collect applicable mushrooms from triggered pills (excluding "Favorites")
     activePills.forEach(pill => {
-      if (pill.label !== "Favorites") {
-        pill.applicableshrooms.forEach(shroom => {
-          if (mushroomCountMap.has(shroom)) {
-            mushroomCountMap.set(shroom, mushroomCountMap.get(shroom) + 1);
-          } else {
-            mushroomCountMap.set(shroom, 1);
-          }
-        });
-      }
+        if (pill.label !== "Favorites") {
+            pill.applicableshrooms.forEach(shroom => {
+                if (mushroomCountMap.has(shroom)) {
+                    mushroomCountMap.set(shroom, mushroomCountMap.get(shroom) + 1);
+                } else {
+                    mushroomCountMap.set(shroom, 1);
+                }
+            });
+        }
     });
 
-    // Retrieve "Favorites" list from local storage
-    const storedIdk = localStorage.getItem('idk'); // Change 'idk' to 'favs' when ready
-    if (storedIdk) {
-      const idk = JSON.parse(storedIdk);
-      const favoritesEntry = idk.find(entry => entry.label === "Favorites");
-      console.log("f", favoritesEntry, "idk", idk)
-      if (favoritesEntry && Array.isArray(favoritesEntry.applicableshrooms)) {
-        favoritesEntry.applicableshrooms.forEach(shroom => {
-          if (mushroomCountMap.has(shroom)) {
-            console.log(mushroomCountMap);
-            mushroomCountMap.set(shroom, mushroomCountMap.get(shroom) + 1);
-          } else {
-            mushroomCountMap.set(shroom, 1);
-          }
-        });
-      }
+    // Retrieve "Favorites" list from local storage ONLY if "Favorites" is triggered
+    if (isFavoritesTriggered) {
+        const storedIdk = localStorage.getItem('idk'); // Change 'idk' to 'favs' when ready
+        if (storedIdk) {
+            const idk = JSON.parse(storedIdk);
+            const favoritesEntry = idk.find(entry => entry.label === "Favorites");
+            console.log("Favorites Entry:", favoritesEntry, "idk:", idk);
+
+            if (favoritesEntry && Array.isArray(favoritesEntry.applicableshrooms)) {
+                favoritesEntry.applicableshrooms.forEach(shroom => {
+                    if (mushroomCountMap.has(shroom)) {
+                        mushroomCountMap.set(shroom, mushroomCountMap.get(shroom) + 1);
+                    } else {
+                        mushroomCountMap.set(shroom, 1);
+                    }
+                });
+            }
+        }
     }
 
-    // Determine the number of active pills (including Favorites if applicable)
-    const totalActivePills = activePills.length + (storedIdk ? 1 : 0);
+    // Determine the number of active pills (including "Favorites" if applicable)
+    const totalActivePills = activePills.length;
 
     // Only include mushrooms that are present in ALL active pills (AND condition)
     const allowedMushrooms = new Set();
     mushroomCountMap.forEach((count, shroom) => {
-      if (count === totalActivePills) {
-        allowedMushrooms.add(shroom);
-      }
+        if (count === totalActivePills) {
+            allowedMushrooms.add(shroom);
+        }
     });
+
     console.log("Active Pills:", activePills);
     console.log("Allowed Mushrooms:", allowedMushrooms);
 
     // Filter mushrooms based on search term and allowed mushrooms
     const filtered = mushroomslist.filter(mushroom => {
-      const matchesSearch = mushroom.title.toLowerCase().includes(searchTerm.toLowerCase());
-      return matchesSearch && (allowedMushrooms.size === 0 || allowedMushrooms.has(mushroom.imageId));
+        const matchesSearch = mushroom.title.toLowerCase().includes(searchTerm.toLowerCase());
+
+        // If no pills are triggered, filter only by search term
+        if (activePills.length === 0) {
+            return matchesSearch;
+        }
+
+        // Otherwise, filter by search term and include only if in ALL active pills
+        return matchesSearch && allowedMushrooms.has(mushroom.imageId);
     });
 
     setFilteredMushrooms(filtered);
-  }, [searchTerm, pillsState]);
-  let triggeredPills = pillsState.filter((pill) => pill.triggered);
+}, [searchTerm, pillsState]);
+
   return (
     <div className="page bg-[#397367] relative" >
       <div className="w-full  pb-[12%] h-[18%]">
