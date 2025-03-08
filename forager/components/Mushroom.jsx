@@ -62,7 +62,6 @@ const Mushroom = ({ title, binom, facts, info, imageId, imageUrl, toxic, percent
                 </div>
                 <div className="flex items-center gap-[6em]">
                     <h3 className={styles.binom}>{binom}</h3>
-                    {/* SVG on the left <div className="cursor-pointer" onClick={handleClick}>*/}
                     <div className="cursor-pointer" onClick={handleAddClick}>
                         <img
                             src='/add.svg'

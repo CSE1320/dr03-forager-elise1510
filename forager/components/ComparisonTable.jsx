@@ -2,6 +2,7 @@ import React from 'react';
 import styles from '../styles/comparisontable.module.css';
 import { ScaleMushroomCard } from './MushroomCard';
 //TODO: FIX BORDER
+//TODO:editable
 const ComparisonTable = ({ yourshroom, shroom2, percent }) => {
     const attributes = [
         { key: "cshape", label: "Cap Shape" },
@@ -28,10 +29,10 @@ const ComparisonTable = ({ yourshroom, shroom2, percent }) => {
                         imageId={yourshroom.imageId}
                         imageUrl={yourshroom.imageUrl}
                         toxic={false}
-                        size={1.4} 
+                        size={1.4}
                     />
                 </div>
-                
+
                 {/* Shroom2 */}
                 <div className="relative">
                     <ScaleMushroomCard
@@ -39,7 +40,7 @@ const ComparisonTable = ({ yourshroom, shroom2, percent }) => {
                         imageId={shroom2.imageId}
                         imageUrl={shroom2.imageUrl}
                         toxic={isShroom2Toxic}
-                        size={1.4} 
+                        size={1.4}
                     />
                     {/* Percentage on top of shroom2 */}
                     <div className="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
@@ -56,22 +57,17 @@ const ComparisonTable = ({ yourshroom, shroom2, percent }) => {
                     {attributes.map(({ key, label }) => (
                         <React.Fragment key={key}>
                             {/* Yourshroom Column */}
-                            <div className="flex items-center whitespace-nowrap relative ml-5">
+                            <div className="flex items-center whitespace-nowrap relative ml-5 ">
                                 {/* Bullet Icon */}
-                                <div className="w-4 h-4 bg-gray-400 rounded-full flex items-center justify-center mr-1">
-                                    <svg
+                                <div className="w-4 h-4 bg-[#D9D9D9] rounded-full flex items-center justify-center mr-1">
+                                    <img
+                                        src="/x.svg"
+                                        alt="Bullet Icon"
                                         width="8"
                                         height="8"
-                                        viewBox="0 0 24 24"
-                                        fill="none"
-                                        stroke="black"
-                                        strokeWidth="2"
-                                        strokeLinecap="round"
-                                        strokeLinejoin="round"
-                                    >
-                                        <line x1="18" y1="6" x2="6" y2="18" />
-                                        <line x1="6" y1="6" x2="18" y2="18" />
-                                    </svg>
+                                        className="inline-block"
+                                        style={{ stroke: "black", strokeWidth: 2, strokeLinecap: "round", strokeLinejoin: "round" }}
+                                    />
                                 </div>
                                 {/* Text */}
                                 <span className={styles.txt}>{yourshroom[key] || "?"}</span>
