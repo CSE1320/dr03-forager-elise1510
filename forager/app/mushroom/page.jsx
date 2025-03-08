@@ -85,7 +85,7 @@ export default function MushroomPage() {
         </div>
 
         {/* Main Content */}
-        <div className="pt-[100px] pb-[100px]">
+        <div className="pt-[100px] pb-[100px]"> {/* PX size adds appropriate padding regadless of screen size */}
           <div className="flex justify-center">
             <div className="flex justify-between items-center w-[70%] pb-[2em]">
               <div className="text-center text-[#314053] font-nunito text-xs font-normal">

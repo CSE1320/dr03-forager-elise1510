@@ -9,7 +9,7 @@ const BackgroundScreen = () => {
   return (
     <div>
       <div className="overlay absolute bottom-0 left-0 w-full h-[119px] bg-black/50">
-        <div className="cam_icon w-[38px] h-[38px] shrink-0 box-border absolute left-[52px] top-[35px]">
+        <div className="cam_icon w-[38px] h-[38px] shrink-0 box-border absolute left-[52px] top-[35px]">  {/* PX size adds appropriate button size & placement */}
           <img
             src="/gal.svg"
             alt="Gallery Icon"
