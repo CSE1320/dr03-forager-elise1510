@@ -51,7 +51,13 @@ export const mushroomslist = [
     imageId: 'pb',
     imageUrl: '/images/pb.png',
     toxic: false,
-  }
+  },
+  {
+    title: 'Horse Mushroom',
+    imageId: 'hm',
+    imageUrl: '/images/hm.jpg',
+    toxic: false,
+  },
 ];
 
 export const mushroomslistpercent = [
@@ -182,61 +188,73 @@ export var pills = [
     label: 'Favorites',
     triggered: true,
     cat: 'Tags',
+    applicableshrooms: ["dc", "ps", "da", "fdc", "pb"]
   },
   {
     label: 'Recent',
     triggered: false,
     cat: 'Tags',
+    applicableshrooms: ["dc", "ps", "da", "fdc", "pb"]
   },
   {
     label: 'Texas',
     triggered: true,
     cat: 'Regions',
+    applicableshrooms: ["dc", "ps", "da", "fdc", "pb"]
   },
   {
     label: 'North America',
     triggered: false,
     cat: 'Regions',
+    applicableshrooms: ["dc", "ps", "da", "fdc", "pb"]
   },
   {
     label: 'South America',
     triggered: false,
     cat: 'Regions',
+    applicableshrooms: ["dc", "ps", "da", "fdc", "pb"]
   },
   {
     label: 'Asia',
     triggered: false,
     cat: 'Regions',
+    applicableshrooms: ["dc", "ps", "da", "fdc", "pb"]
   },
   {
     label: 'Europe',
     triggered: false,
     cat: 'Regions',
+    applicableshrooms: ["dc", "ps", "da", "fdc", "pb"]
   },
   {
     label: 'Africa',
     triggered: false,
     cat: 'Regions',
+    applicableshrooms: ["dc", "ps", "da", "fdc", "pb"]
   },
   {
     label: 'Poisonous',
     triggered: false,
     cat: 'Category',
+    applicableshrooms: ["dc", "ps", "da", "fdc", "pb"]
   },
   {
     label: 'Medicinal',
     triggered: false,
     cat: 'Category',
+    applicableshrooms: ["dc", "ps", "da", "fdc", "pb"]
   },
   {
     label: 'Mythical',
     triggered: false,
     cat: 'Category',
+    applicableshrooms: ["dc", "ps", "da", "fdc", "pb"]
   },
   {
     label: 'Good for Broths',
     triggered: false,
     cat: 'Category',
+    applicableshrooms: ["dc", "ps", "da", "fdc", "pb"]
   }
 ];
 export const shroom = {
@@ -289,17 +307,17 @@ export const yourshroom = {
 
 };
 
-/* export var pillg1 = [
+ export var pillg1 = [
   {
     label: 'Favorites',
     triggered: true,
-    cat: 'Tagx',
+    cat: 'Tags',
     applicableshrooms: ["dc", "ps", "da","fdc", "pf"]
   },
   {
     label: 'Recent',
     triggered: true,
-    cat: 'Tagx',
+    cat: 'Tags',
     applicableshrooms: ["dc", "ps", "da","fdc", "pf"]
   }
 ];
@@ -311,6 +329,7 @@ export var pillg2 = [
     label: 'Texas',
     triggered: true,
     cat: 'Regions',
+    applicableshrooms: ["dc", "ps", "da","fdc", "pf"]
   },
   {
     label: 'North America',
@@ -369,9 +388,9 @@ export var pillg3 =[
     cat: 'Category',
     applicableshrooms: ["dc", "ps", "da","fdc", "pf"]
   }
-]; */
+]; 
 
-//export var pl = [pillg1,pillg2,pillg3];
+export var pl = [pillg1,pillg2,pillg3];
 
 
 export const shrooms = [

@@ -1,7 +1,7 @@
 /// DashboardPage
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, act } from 'react';
 import NavBar from '../../components/NavBar';
 import "../../styles/globals.css";
 import Search from '@/components/Search';
@@ -44,13 +44,76 @@ export default function DashboardPage() {
   };
 
   useEffect(() => {
-    const filtered = mushroomslist.filter((mushroom) =>
-      mushroom.title.toLowerCase().includes(searchTerm.toLowerCase())
-    );
-    setFilteredMushrooms(filtered);
-  }, [searchTerm]);
+    // Get all triggered pills
+    const activePills = pillsState.filter(pill => pill.triggered);
+    console.log("Active Pills:", activePills);
 
-  const triggeredPills = pillsState.filter((pill) => pill.triggered);
+    // If no pills are triggered, filter only by search term
+    if (activePills.length === 0) {
+      const filtered = mushroomslist.filter(mushroom =>
+        mushroom.title.toLowerCase().includes(searchTerm.toLowerCase())
+      );
+      setFilteredMushrooms(filtered);
+      return;
+    }
+
+    // Initialize a map to count occurrences of each mushroom in active pills
+    const mushroomCountMap = new Map();
+
+
+
+    activePills.forEach(pill => {
+      if (pill.label !== "Favorites") {
+        pill.applicableshrooms.forEach(shroom => {
+          if (mushroomCountMap.has(shroom)) {
+            mushroomCountMap.set(shroom, mushroomCountMap.get(shroom) + 1);
+          } else {
+            mushroomCountMap.set(shroom, 1);
+          }
+        });
+      }
+    });
+
+    // Retrieve "Favorites" list from local storage
+    const storedIdk = localStorage.getItem('idk'); // Change 'idk' to 'favs' when ready
+    if (storedIdk) {
+      const idk = JSON.parse(storedIdk);
+      const favoritesEntry = idk.find(entry => entry.label === "Favorites");
+      console.log("f", favoritesEntry, "idk", idk)
+      if (favoritesEntry && Array.isArray(favoritesEntry.applicableshrooms)) {
+        favoritesEntry.applicableshrooms.forEach(shroom => {
+          if (mushroomCountMap.has(shroom)) {
+            console.log(mushroomCountMap);
+            mushroomCountMap.set(shroom, mushroomCountMap.get(shroom) + 1);
+          } else {
+            mushroomCountMap.set(shroom, 1);
+          }
+        });
+      }
+    }
+
+    // Determine the number of active pills (including Favorites if applicable)
+    const totalActivePills = activePills.length + (storedIdk ? 1 : 0);
+
+    // Only include mushrooms that are present in ALL active pills (AND condition)
+    const allowedMushrooms = new Set();
+    mushroomCountMap.forEach((count, shroom) => {
+      if (count === totalActivePills) {
+        allowedMushrooms.add(shroom);
+      }
+    });
+    console.log("Active Pills:", activePills);
+    console.log("Allowed Mushrooms:", allowedMushrooms);
+
+    // Filter mushrooms based on search term and allowed mushrooms
+    const filtered = mushroomslist.filter(mushroom => {
+      const matchesSearch = mushroom.title.toLowerCase().includes(searchTerm.toLowerCase());
+      return matchesSearch && (allowedMushrooms.size === 0 || allowedMushrooms.has(mushroom.imageId));
+    });
+
+    setFilteredMushrooms(filtered);
+  }, [searchTerm, pillsState]);
+  let triggeredPills = pillsState.filter((pill) => pill.triggered);
   return (
     <div className="page bg-[#397367] relative" >
       <div className="w-full  pb-[12%] h-[18%]">
@@ -63,7 +126,7 @@ export default function DashboardPage() {
           </h1>
         </div>
       </div>
-      <div className="w-full h-[82%] flex-shrink-0 rounded-t-[41px] bg-[#F2F2F2]">
+      <div className="w-full h-[132%] flex-shrink-0 rounded-t-[41px] bg-[#F2F2F2]">
         <div className="pt-[7%] ml-[5.5%]">
           <Search setSearchTerm={setSearchTerm} onFilterClick={() => setShowFilterSettings(true)} />
         </div>
@@ -71,7 +134,7 @@ export default function DashboardPage() {
           <DTitlePillList title="My Collection" pills={triggeredPills} onPillClick={handlePillClick} />
         </div>
         {/* <div onClick={handleMushroomItemClick}> */}
-        <div>
+        <div className="pb-[12%]">
           <DashboardDataMushroomList mushrooms={filteredMushrooms} onCardClick={handleMushroomItemClick} />
         </div>
       </div>

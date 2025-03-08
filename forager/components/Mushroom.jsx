@@ -2,15 +2,17 @@ import React from 'react';
 import { WScaleMushroomCard } from './MushroomCard';
 import styles from '../styles/mushroom.module.css';
 import add from '../public/add.svg'
-import {idk} from '@/data/development';
+import {idk as id} from '@/data/development';
 const Mushroom = ({ title, binom, facts, info, imageId, imageUrl, toxic, percent }) => {
     console.log(percent);
-
-
     const handleAddClick = () => {
         console.log('Add button clicked!');
     
-        // Find the "Favorites" object in idk
+        // Retrieve idk from local storage
+        const storedIdk = localStorage.getItem('idk');
+        let idk = storedIdk ? JSON.parse(storedIdk) : id;
+    
+        // Find and update the "Favorites" object
         const updatedIdk = idk.map(entry => {
             if (entry.label === 'Favorites') {
                 if (!entry.applicableshrooms || !Array.isArray(entry.applicableshrooms)) {
@@ -19,8 +21,7 @@ const Mushroom = ({ title, binom, facts, info, imageId, imageUrl, toxic, percent
                 }
     
                 // Add the imageId to applicableshrooms if not already present
-                const isAlreadyAdded = entry.applicableshrooms.includes(imageId);
-                if (!isAlreadyAdded) {
+                if (!entry.applicableshrooms.includes(imageId)) {
                     return {
                         ...entry,
                         applicableshrooms: [...entry.applicableshrooms, imageId],
@@ -33,7 +34,10 @@ const Mushroom = ({ title, binom, facts, info, imageId, imageUrl, toxic, percent
             return entry;
         });
     
-        
+        // Save updatedIdk back to local storage
+        localStorage.setItem('idk', JSON.stringify(updatedIdk));
+    
+        console.log('Updated idk saved to local storage:', updatedIdk);
     };
     return (
         <div>
