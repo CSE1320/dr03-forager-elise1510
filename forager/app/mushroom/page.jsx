@@ -4,7 +4,7 @@
 import React, { useState, useEffect } from 'react';
 import NavBar from '../../components/NavBar';
 import "../../styles/globals.css";
-import { shrooms,mushroomslistpercent2 } from '../../data/development';
+import { shrooms, mushroomslistpercent2,shroom } from '../../data/development';
 import { Message, BigMessage } from '@/components/Message';
 import Mushroom from '@/components/Mushroom';
 import { DataMushroomListPercent } from '@/components/MushroomList';
@@ -17,11 +17,11 @@ export default function MushroomPage() {
   const imageId = searchParams.get('imageId');
   // console.log(imageId);
   // console.log(shrooms); 
-  const selectedMushroom  = shrooms.find(shroom => shroom.imageId === imageId);
-/*   if(!selectedMushroom){
-    selectedMushroom = {shroom}
-    console.log("SL",selectedMushroom);
-  } */
+  let selectedMushroom = shrooms.find(shroom => shroom.imageId === imageId);
+     if(!selectedMushroom){
+      selectedMushroom = shrooms.find(shroom => shroom.imageId === 'dc');
+      console.log("SL",selectedMushroom);
+    } 
   console.log(selectedMushroom);
   const getCount = () => Number(localStorage.getItem('count')) || 0;
   const [count, setCount] = useState(getCount);
@@ -29,7 +29,7 @@ export default function MushroomPage() {
 
   // Fetch count from localStorage after component mounts
   useEffect(() => {
-    
+
     setCount(getCount());
   }, []);
 
@@ -54,10 +54,6 @@ export default function MushroomPage() {
     window.location.href = '/comparison';
   };
 
-  // Handle case where selectedMushroom is not found
-  if (!selectedMushroom) {
-    return <div>Mushroom not found</div>;
-  }
 
   return (
     <div className="page">
@@ -125,7 +121,7 @@ export default function MushroomPage() {
           </div>
           <div>
             <DataMushroomListPercent mushrooms={mushroomslistpercent2} />
-          </div>
+          </div>{console.log("here")}
         </div>
         {/* Bottom Navigation Bar */}
         <NavBar />

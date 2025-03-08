@@ -7,7 +7,7 @@ const MushroomCard = ({ title, imageId, imageUrl, toxic }) => {
     <div>
       <div className="flex flex-col items-center">
         <div className="w-[7.142857142857143em] h-[9.214285714285714em] flex flex-col items-center bg-white shadow-md justify-start">
-          {{/* Aria label instead of alt text for screen reader */}}
+          {/* Aria label instead of alt text for screen reader */}
           <div
             className={`w-[6.714285714285714em] h-[7.571428571428571em] mt-[.5em] relative bg-cover bg-no-repeat bg-center ${imageId}`}
             style={{ backgroundImage: `url(${imageUrl})` }}
@@ -36,7 +36,7 @@ const MushroomCardPercent = ({ title, imageId, imageUrl, percent, toxic }) => (
   <div>
     <div className="flex flex-col items-center">
       <div className="w-[7.142857142857143em] h-[9.214285714285714em] flex flex-col items-center bg-white shadow-md justify-start">
-      {{/* Aria label instead of alt text for screen reader */}}
+      {/* Aria label instead of alt text for screen reader */}
           <div
             className={`w-[6.714285714285714em] h-[7.571428571428571em] mt-[.5em] relative bg-cover bg-no-repeat bg-center ${imageId}`}
             style={{ backgroundImage: `url(${imageUrl})` }}
@@ -64,7 +64,7 @@ const MushroomCardPercent = ({ title, imageId, imageUrl, percent, toxic }) => (
               alt="Warning Icon"
               width="21"
               height="21"
-              className="absolute top-[1px] left-[2px] w-[20px] h-[20px]"
+              className="absolute top-[1px] left-[30px] w-[20px] h-[20px]"
             />
           )}
         </div>
@@ -197,6 +197,8 @@ const WScaleMushroomCard = ({ title, imageId, imageUrl, toxic, size = 1, wsize =
     </div>
   );
 };
+
+
 const DashboardMushroomCard = ({ title, imageId, imageUrl, toxic, onCardClick }) => {
   return (
     <div>

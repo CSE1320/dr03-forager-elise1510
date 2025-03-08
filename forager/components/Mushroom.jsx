@@ -1,5 +1,5 @@
 import React from 'react';
-import { WScaleMushroomCard } from './MushroomCard';
+import { WScaleMushroomCard, WScaleMushroomCardOG } from './MushroomCard';
 import styles from '../styles/mushroom.module.css';
 import add from '../public/add.svg'
 import {idk as id} from '@/data/development';
@@ -48,6 +48,7 @@ const Mushroom = ({ title, binom, facts, info, imageId, imageUrl, toxic, percent
                         <div className={`w-[6em] h-10 flex items-center justify-center rounded-[10px] ${toxic ? 'bg-[#FF5050]' : 'bg-green-500'}`}>
                             <div className={styles.percent}>{percent}% Match</div>
                         </div>
+                     
                     </div>
 
                     {/* Mushroom Card */}
@@ -59,6 +60,7 @@ const Mushroom = ({ title, binom, facts, info, imageId, imageUrl, toxic, percent
                         size={1.7}
                         wsize={2.7}
                     />
+                       
                 </div>
                 <div className="flex items-center gap-[6em]">
                     <h3 className={styles.binom}>{binom}</h3>
@@ -70,7 +72,7 @@ const Mushroom = ({ title, binom, facts, info, imageId, imageUrl, toxic, percent
                         />
                     </div>
                 </div>
-
+   {console.log("f",facts)}
                 {/* Fast Facts */}
                 <div className={styles.factsquare}>
                     <h2 className={styles.factheading}>Fast Facts</h2>
@@ -78,6 +80,7 @@ const Mushroom = ({ title, binom, facts, info, imageId, imageUrl, toxic, percent
                         {facts.map((fact, index) => (
                             <p key={index}>{fact}</p>
                         ))}
+                     
                     </div>
                 </div>
 
