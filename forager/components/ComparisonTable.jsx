@@ -1,8 +1,8 @@
-import React from 'react';
+'use client'
+import React, { useState } from 'react';
 import styles from '../styles/comparisontable.module.css';
 import { ScaleMushroomCard } from './MushroomCard';
-//TODO: FIX BORDER
-//TODO:editable
+
 const ComparisonTable = ({ yourshroom, shroom2, percent }) => {
     const attributes = [
         { key: "cshape", label: "Cap Shape" },
@@ -15,6 +15,22 @@ const ComparisonTable = ({ yourshroom, shroom2, percent }) => {
         { key: "sring", label: "Stem Ring" },
         { key: "hab", label: "Habitat" },
     ];
+
+    // Initialize state for each attribute
+    const [editableValues, setEditableValues] = useState(
+        attributes.reduce((acc, { key }) => {
+            acc[key] = yourshroom[key] || "";
+            return acc;
+        }, {})
+    );
+
+    // Handle input change
+    const handleInputChange = (key, value) => {
+        setEditableValues(prevState => ({
+            ...prevState,
+            [key]: value
+        }));
+    };
 
     // Determine if shroom2 is toxic
     const isShroom2Toxic = shroom2.toxic;
@@ -69,8 +85,14 @@ const ComparisonTable = ({ yourshroom, shroom2, percent }) => {
                                         style={{ stroke: "black", strokeWidth: 2, strokeLinecap: "round", strokeLinejoin: "round" }}
                                     />
                                 </div>
-                                {/* Text */}
-                                <span className={styles.txt}>{yourshroom[key] || "?"}</span>
+                                {/* Editable Input */}
+                                <input
+                                    type="text"
+                                    value={editableValues[key]}
+                                    onChange={(e) => handleInputChange(key, e.target.value)}
+                                    className={styles.txt}
+                                    style={{ border: "none", outline: "none", background: "transparent" }}
+                                />
 
                                 {/* Underline */}
                                 <div
@@ -98,4 +120,5 @@ const ComparisonTable = ({ yourshroom, shroom2, percent }) => {
         </div>
     );
 };
+
 export default ComparisonTable;
