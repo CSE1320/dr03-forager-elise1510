@@ -4,7 +4,7 @@ import styles from '../styles/mushroom.module.css';
 import add from '../public/add.svg'
 import {idk as id} from '@/data/development';
 const Mushroom = ({ title, binom, facts, info, imageId, imageUrl, toxic, percent }) => {
-    console.log(percent);
+    /* console.log(percent); */
     const handleAddClick = () => {
         console.log('Add button clicked!');
     
