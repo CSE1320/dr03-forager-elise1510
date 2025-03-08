@@ -50,11 +50,11 @@ export default function DashboardPage() {
 
     // If no pills are triggered, filter only by search term
     if (activePills.length === 0) {
-        const filtered = mushroomslist.filter(mushroom =>
-            mushroom.title.toLowerCase().includes(searchTerm.toLowerCase())
-        );
-        setFilteredMushrooms(filtered);
-        return;
+      const filtered = mushroomslist.filter(mushroom =>
+        mushroom.title.toLowerCase().includes(searchTerm.toLowerCase())
+      );
+      setFilteredMushrooms(filtered);
+      return;
     }
 
     // Initialize a map to count occurrences of each mushroom in active pills
@@ -65,35 +65,35 @@ export default function DashboardPage() {
 
     // Collect applicable mushrooms from triggered pills (excluding "Favorites")
     activePills.forEach(pill => {
-        if (pill.label !== "Favorites") {
-            pill.applicableshrooms.forEach(shroom => {
-                if (mushroomCountMap.has(shroom)) {
-                    mushroomCountMap.set(shroom, mushroomCountMap.get(shroom) + 1);
-                } else {
-                    mushroomCountMap.set(shroom, 1);
-                }
-            });
-        }
+      if (pill.label !== "Favorites") {
+        pill.applicableshrooms.forEach(shroom => {
+          if (mushroomCountMap.has(shroom)) {
+            mushroomCountMap.set(shroom, mushroomCountMap.get(shroom) + 1);
+          } else {
+            mushroomCountMap.set(shroom, 1);
+          }
+        });
+      }
     });
 
     // Retrieve "Favorites" list from local storage ONLY if "Favorites" is triggered
     if (isFavoritesTriggered) {
-        const storedIdk = localStorage.getItem('idk'); // Change 'idk' to 'favs' when ready
-        if (storedIdk) {
-            const idk = JSON.parse(storedIdk);
-            const favoritesEntry = idk.find(entry => entry.label === "Favorites");
-            console.log("Favorites Entry:", favoritesEntry, "idk:", idk);
+      const storedIdk = localStorage.getItem('idk'); // Change 'idk' to 'favs' when ready
+      if (storedIdk) {
+        const idk = JSON.parse(storedIdk);
+        const favoritesEntry = idk.find(entry => entry.label === "Favorites");
+        console.log("Favorites Entry:", favoritesEntry, "idk:", idk);
 
-            if (favoritesEntry && Array.isArray(favoritesEntry.applicableshrooms)) {
-                favoritesEntry.applicableshrooms.forEach(shroom => {
-                    if (mushroomCountMap.has(shroom)) {
-                        mushroomCountMap.set(shroom, mushroomCountMap.get(shroom) + 1);
-                    } else {
-                        mushroomCountMap.set(shroom, 1);
-                    }
-                });
+        if (favoritesEntry && Array.isArray(favoritesEntry.applicableshrooms)) {
+          favoritesEntry.applicableshrooms.forEach(shroom => {
+            if (mushroomCountMap.has(shroom)) {
+              mushroomCountMap.set(shroom, mushroomCountMap.get(shroom) + 1);
+            } else {
+              mushroomCountMap.set(shroom, 1);
             }
+          });
         }
+      }
     }
 
     // Determine the number of active pills (including "Favorites" if applicable)
@@ -102,9 +102,9 @@ export default function DashboardPage() {
     // Only include mushrooms that are present in ALL active pills (AND condition)
     const allowedMushrooms = new Set();
     mushroomCountMap.forEach((count, shroom) => {
-        if (count === totalActivePills) {
-            allowedMushrooms.add(shroom);
-        }
+      if (count === totalActivePills) {
+        allowedMushrooms.add(shroom);
+      }
     });
 
     console.log("Active Pills:", activePills);
@@ -112,51 +112,60 @@ export default function DashboardPage() {
 
     // Filter mushrooms based on search term and allowed mushrooms
     const filtered = mushroomslist.filter(mushroom => {
-        const matchesSearch = mushroom.title.toLowerCase().includes(searchTerm.toLowerCase());
+      const matchesSearch = mushroom.title.toLowerCase().includes(searchTerm.toLowerCase());
 
-        // If no pills are triggered, filter only by search term
-        if (activePills.length === 0) {
-            return matchesSearch;
-        }
+      // If no pills are triggered, filter only by search term
+      if (activePills.length === 0) {
+        return matchesSearch;
+      }
 
-        // Otherwise, filter by search term and include only if in ALL active pills
-        return matchesSearch && allowedMushrooms.has(mushroom.imageId);
+      // Otherwise, filter by search term and include only if in ALL active pills
+      return matchesSearch && allowedMushrooms.has(mushroom.imageId);
     });
 
     setFilteredMushrooms(filtered);
-}, [searchTerm, pillsState]);
+  }, [searchTerm, pillsState]);
 
   return (
-    <div className="page bg-[#397367] relative" >
-      <div className="w-full  pb-[12%] h-[18%]">
-        <div className="w-[55%] h-[7%] flex-shrink-0 pl-[7%]  pt-[8%]">
-          <h1 className="nunito-b text-white text-[57px] leading-10">
-            <span className="text-white nunito-f text-3xl font-medium leading-10">
-              Hi,
-            </span>{' '}
-            Chantelle!
-          </h1>
-        </div>
-      </div>
-      <div className="w-full h-[132%] flex-shrink-0 rounded-t-[41px] bg-[#F2F2F2]">
-        <div className="pt-[7%] ml-[5.5%]">
-          <Search setSearchTerm={setSearchTerm} onFilterClick={() => setShowFilterSettings(true)} />
-        </div>
-        <div className="ml-[7%] mb-[2%]">
-          <DTitlePillList title="My Collection" pills={triggeredPills} onPillClick={handlePillClick} />
-        </div>
-        {/* <div onClick={handleMushroomItemClick}> */}
-        <div className="pb-[12%]">
-          <DashboardDataMushroomList mushrooms={filteredMushrooms} onCardClick={handleMushroomItemClick} />
-        </div>
-      </div>
-      <NavBar />
-      {showFilterSettings && (
-        <div className="absolute inset-0 bg-black bg-opacity-50 z-40 flex items-start">
-          <TitleFilterSettings pills={pillsState} onPillClick={handlePillClick} onClose={() => setShowFilterSettings(false)} />
-        </div>
-      )}
+<div className="page bg-[#397367] relative overflow-x-hidden overflow-y-auto">
+  <div className="w-full pb-[12%] h-[18%]">
+    <div className="w-[55%] h-[7%] flex-shrink-0 pl-[7%] pt-[8%]">
+      <h1 className="nunito-b text-white text-[57px] leading-10">
+        <span className="text-white nunito-f text-3xl font-medium leading-10">
+          Hi,
+        </span>{' '}
+        Chantelle!
+      </h1>
     </div>
+  </div>
+  <img
+    src="/homemushroom2.svg"
+    alt="Decorative Mushroom Icon"
+    className="w-[17em] h-[17em] flex-shrink-0 absolute right-0 top-[-10] z-10 -mr-[4em]"
+  />
+
+  {/* main content*/}
+  <div className="w-full h-[90%] flex-shrink-0 rounded-t-[41px] bg-[#F2F2F2] relative z-20">
+  <div className="pt-[7%] ml-[5.5%]">
+    <Search setSearchTerm={setSearchTerm} onFilterClick={() => setShowFilterSettings(true)} />
+  </div>
+  <div className="ml-[7%] mb-[2%]">
+    <DTitlePillList title="My Collection" pills={triggeredPills} onPillClick={handlePillClick} />
+  </div>
+  <div>
+    <DashboardDataMushroomList mushrooms={filteredMushrooms} onCardClick={handleMushroomItemClick} />
+  </div>
+</div>
+
+<NavBar className="fixed bottom-0 w-full z-30" />
+
+  {/* Filter Settings Overlay */}
+  {showFilterSettings && (
+    <div className="absolute inset-0 bg-black bg-opacity-50 z-40 flex items-start">
+      <TitleFilterSettings pills={pillsState} onPillClick={handlePillClick} onClose={() => setShowFilterSettings(false)} />
+    </div>
+  )}
+</div>
   );
 }
 //endregion

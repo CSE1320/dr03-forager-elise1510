@@ -11,7 +11,7 @@ import { DataMushroomListPercent } from '@/components/MushroomList';
 import { IoChevronBack, IoClose } from 'react-icons/io5';
 import { IoChevronForward, IoArrowForwardOutline } from "react-icons/io5";
 import { useSearchParams } from 'next/navigation';
-
+import { useRouter } from 'next/navigation';
 export default function MushroomPage() {
   const searchParams = useSearchParams();
   const imageId = searchParams.get('imageId');
@@ -54,8 +54,9 @@ export default function MushroomPage() {
     window.location.href = '/comparison';
   };
 
-
+  const router = useRouter();
   return (
+    
     <div className="page">
       {isMessageVisible && (
         <div className="fixed inset-0 flex items-center justify-center z-50">
@@ -78,7 +79,8 @@ export default function MushroomPage() {
         {/* Top Navigation Bar */}
         <div className="fixed top-0 left-0 right-0 flex items-center justify-between p-4 bg-[#579076] rounded-b-[40px] shadow-md z-50">
           <button className="flex items-center text-white">
-            <IoChevronBack />
+            <IoChevronBack
+            onClick={() => router.back()} />
           </button>
           <div className="hder">Match Results</div>
           <div className="w-10"></div> {/* Empty div for balanced spacing */}
@@ -93,7 +95,8 @@ export default function MushroomPage() {
               </div>
               <div className="flex items-center gap-2 p-2 rounded-[10px] bg-[#FF5050] cursor-pointer">
                 <span className="text-white text-xs font-nunito font-normal">Report Error</span>
-                <IoArrowForwardOutline />
+                <IoArrowForwardOutline
+                 />
               </div>
             </div>
           </div>

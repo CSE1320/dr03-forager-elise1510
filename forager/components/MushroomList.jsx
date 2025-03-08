@@ -83,7 +83,7 @@ const DataMushroomListPercent = ({ mushrooms }) => {
 };
 const DashboardDataMushroomList = ({ mushrooms, onCardClick }) => {
   return (
-    <div className="flex flex-wrap gap-4 px-6 justify-start items-start w-full self-start">
+    <div className="flex flex-wrap gap-4 px-6 mb-[10em] justify-start items-start w-full self-start">
       {mushrooms.map((mushroom, index) => (
         <DashboardMushroomCard
           key={index}

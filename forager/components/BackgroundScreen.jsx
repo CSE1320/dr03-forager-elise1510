@@ -1,11 +1,10 @@
-
-
+'use client'
 import React from 'react';
 import '../styles/BackgroundScreen.module.css';
 import '../app/nobarlayout'
-
+import { useRouter } from 'next/navigation';
 const BackgroundScreen = () => {
-
+  const router = useRouter();
   return (
     <div>
       <div className="overlay absolute bottom-0 left-0 w-full h-[119px] bg-black/50">
@@ -44,6 +43,7 @@ const BackgroundScreen = () => {
         width="62"
         height="62"
         className="w-[150%] h-[150%]"
+        onClick={() => router.back()}
       />
     </div>
     <div className="cam_icon w-[38px] h-[38px] shrink-0 box-border absolute right-[45px] top-[41px]">
