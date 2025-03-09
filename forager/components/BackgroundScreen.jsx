@@ -5,6 +5,10 @@ import '../app/nobarlayout'
 import { useRouter } from 'next/navigation';
 const BackgroundScreen = () => {
   const router = useRouter();
+
+  const handleClick = () => {
+    router.push('/mushroom'); // Navigate to the mushroom page
+  };
   return (
     <div>
       <div className="overlay absolute bottom-0 left-0 w-full h-[119px] bg-black/50">
@@ -18,11 +22,12 @@ const BackgroundScreen = () => {
           />
         </div>
         <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[73px] h-[73px] flex justify-center items-center">
-          <img
-            src="/button.svg"
-            alt="Take Photo Button"
-            className="w-full h-full"
-          />
+        <img
+      src="/button.svg"
+      alt="Take Photo Button"
+      className="w-full h-full cursor-pointer"
+      onClick={handleClick}
+    />
         </div>
         <div className="cam_icon w-[38px] h-[38px] shrink-0 box-border absolute right-[45px] top-[41px]">
           <img

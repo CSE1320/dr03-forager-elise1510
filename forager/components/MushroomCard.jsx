@@ -1,3 +1,4 @@
+'use client'
 import React from 'react';
 import { nunitof } from '@/app/layout'; // Ensure this import is correct
 import styles from '../styles/mushroomCard.module.css';
@@ -51,9 +52,9 @@ const MushroomCardPercent = ({ title, imageId, imageUrl, percent, toxic }) => (
                   : percent >= 80
                     ? '#FF6666'
                     : '#FF7E7E'
-                : percent >= 60
-                  ? 'rgba(165, 165, 165, 0.9)'
-                  : 'rgba(115, 216, 159, 0.9)',
+                : percent >= 70
+                  ? 'rgba(115, 216, 159, 0.9)'
+                  :'rgba(165, 165, 165, 0.9)' ,
             }}
           >
             <p className={styles.value}>{percent}%</p>

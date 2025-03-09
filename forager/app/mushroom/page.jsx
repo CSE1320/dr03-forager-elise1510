@@ -1,5 +1,4 @@
-// MushroomPage
-'use client';
+'use client'
 
 import React, { useState, useEffect } from 'react';
 import NavBar from '../../components/NavBar';
@@ -20,11 +19,12 @@ export default function MushroomPage() {
   let selectedMushroom = shrooms.find(shroom => shroom.imageId === imageId);
      if(!selectedMushroom){
       selectedMushroom = shrooms.find(shroom => shroom.imageId === 'dc');
-      console.log("SL",selectedMushroom);
+      //console.log("SL",selectedMushroom);
     } 
-  console.log(selectedMushroom);
+  //console.log(selectedMushroom);
   const getCount = () => Number(localStorage.getItem('count')) || 0;
-  const [count, setCount] = useState(getCount);
+
+  const [count, setCount] = useState(getCount);  console.log("c",count);
   const [isMessageVisible, setMessageVisible] = useState(true);
 
   // Fetch count from localStorage after component mounts
@@ -39,10 +39,10 @@ export default function MushroomPage() {
   }, [count]);
 
   useEffect(() => {
-    if (count !== 0) {
-      setMessageVisible(false);
-    } else {
+    if (count === 0 || count === 1) {
       setMessageVisible(true);
+    } else {
+      setMessageVisible(false);
     }
   }, [count]);
 
@@ -75,7 +75,7 @@ export default function MushroomPage() {
         </div>
       )}
 
-      <div className={`x ${count === 0 && isMessageVisible ? 'blurred' : ''}`}>
+      <div className={`x ${(count === 0||count===1) && isMessageVisible ? 'blurred' : ''}`}>
         {/* Top Navigation Bar */}
         <div className="fixed top-0 left-0 right-0 flex items-center justify-between p-4 bg-[#579076] rounded-b-[40px] shadow-md z-50">
           <button className="flex items-center text-white">
@@ -124,7 +124,7 @@ export default function MushroomPage() {
           </div>
           <div>
             <DataMushroomListPercent mushrooms={mushroomslistpercent2} />
-          </div>{console.log("here")}
+          </div>
         </div>
         {/* Bottom Navigation Bar */}
         <NavBar />

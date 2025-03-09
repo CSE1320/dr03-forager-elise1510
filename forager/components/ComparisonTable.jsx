@@ -73,9 +73,9 @@ const ComparisonTable = ({ yourshroom, shroom2, percent }) => {
                     {attributes.map(({ key, label }) => (
                         <React.Fragment key={key}>
                             {/* Yourshroom Column */}
-                            <div className="flex items-center whitespace-nowrap relative ml-5 ">
+                            <div className="flex items-center whitespace-nowrap relative ml-5">
                                 {/* Bullet Icon */}
-                                <div className="w-4 h-4 bg-[#D9D9D9] rounded-full flex items-center justify-center mr-1">
+                                <div className="w-4 h-4 bg-[#D9D9D9] rounded-full flex items-center justify-center mr-1 w-[80%]">
                                     <img
                                         src="/x.svg"
                                         alt="Bullet Icon"
@@ -85,23 +85,27 @@ const ComparisonTable = ({ yourshroom, shroom2, percent }) => {
                                         style={{ stroke: "black", strokeWidth: 2, strokeLinecap: "round", strokeLinejoin: "round" }}
                                     />
                                 </div>
-                                {/* Editable Input */}
-                                <input
-                                    type="text"
-                                    value={editableValues[key]}
-                                    onChange={(e) => handleInputChange(key, e.target.value)}
-                                    className={styles.txt}
-                                    style={{ border: "none", outline: "none", background: "transparent" }}
-                                />
 
-                                {/* Underline */}
-                                <div
-                                    className="absolute bottom-0 left-0 w-[70%]"
-                                    style={{
-                                        height: "0.5px",
-                                        backgroundColor: "#000"
-                                    }}
-                                ></div>
+                                {/* Input Field and Underline Container */}
+                                <div className="relative flex-grow">
+                                    {/* Editable Input */}
+                                    <input
+                                        type="text"
+                                        value={editableValues[key]}
+                                        onChange={(e) => handleInputChange(key, e.target.value)}
+                                        className={styles.txt}
+                                        style={{ border: "none", outline: "none", background: "transparent", width: "100%" }}
+                                    />
+
+                                    {/* Underline */}
+                                    <div
+                                        className="absolute bottom-0 left-0 w-full"
+                                        style={{
+                                            height: "0.5px",
+                                            backgroundColor: "#000"
+                                        }}
+                                    ></div>
+                                </div>
                             </div>
 
                             {/* Label Column */}
